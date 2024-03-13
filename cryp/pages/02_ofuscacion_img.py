@@ -2,6 +2,20 @@ import streamlit as st
 from PIL import Image
 import numpy as np
 
+def esteganografia():
+    st.title("Esteganografía: Ocultando Información")
+
+    # Introducción y explicación
+    st.write("La esteganografía es una técnica que oculta información dentro de otros archivos para mantenerla discreta.")
+    st.write("A diferencia de la criptografía, que cifra información para hacerla ilegible, la esteganografía se centra en la invisibilidad de los datos.")
+
+    # Funcionamiento de la esteganografía
+    st.subheader("¿Cómo funciona la Esteganografía?")
+    st.write("La esteganografía oculta mensajes secretos dentro de archivos 'contenedores', como imágenes, audio o video.")
+    st.write("Esta ocultación implica ajustar ligeramente los bits del archivo portador para codificar el mensaje, manteniendo la apariencia normal del archivo.")
+
+    # Ejemplo práctico o imágenes informativas (puedes personalizar esta sección según tus necesidades)
+
 def ofuscar_imagen(imagen):
     # Convertir la imagen a un arreglo NumPy
     array_imagen = np.array(imagen)
@@ -35,4 +49,5 @@ def main():
         st.image([imagen_pil, imagen_ofuscada], caption=["Imagen Original", "Imagen Ofuscada"], width=300)
 
 if __name__ == "__main__":
-    main()
+    esteganografia()  # Llamar a la función de esteganografía
+    main()  # Llamar a la función principal de ofuscador de imágenes
