@@ -80,6 +80,25 @@ def main():
 if __name__ == "__main__":
     main()
 
+
+import streamlit as st
+
+st.title("Cifrados Simétricos y Asimétricos")
+
+st.write("En el mundo de la criptografía, los cifrados simétricos y asimétricos juegan roles fundamentales en la seguridad de la información en línea.")
+
+st.write("Cifrados Simétricos:")
+st.write("En este escenario, Bob y Alice desean comunicarse de forma segura, pero temen que Eve pueda interceptar sus mensajes. Bob cifra sus mensajes utilizando una clave compartida, convirtiendo el mensaje en texto cifrado. Luego, Alice utiliza la misma clave para descifrar el mensaje y recuperar el texto original. En este proceso, la seguridad radica en la confidencialidad de la clave compartida. Si Eve no tiene acceso a esta clave, no puede descifrar el mensaje. Sin embargo, si Eve logra obtener la clave, puede leer todos los mensajes cifrados.")
+st.write("Para este cometido, Bob utiliza una clave (k) para cifrar su mensaje (m) y convertirlo en un texto cifrado (c). Alice recibe c y se encarga de descifrarlo utilizando la misma clave (k) para obtener el mensaje en claro (m). Si todo está correctamente implementado, Eve no debe conocer la clave (k), ni debe saber cómo obtener el mensaje en claro (m) a través del texto cifrado (c).")
+
+st.write("Cifrados Asimétricos:")
+st.write("Los cifrados asimétricos ofrecen una solución más sofisticada. En este caso, cada persona tiene un par de claves: una pública y otra privada. Bob utiliza la clave pública de Alice para cifrar su mensaje, convirtiéndolo en texto cifrado. Solo la clave privada de Alice puede descifrar este mensaje, garantizando así que solo ella pueda leerlo. De manera similar, Alice puede enviar un mensaje a Bob utilizando su clave pública, y solo la clave privada de Bob puede descifrarlo. Este método elimina la necesidad de compartir una clave secreta, lo que reduce el riesgo de comprometer la seguridad si una clave se ve comprometida.")
+
+st.write("En resumen, los cifrados simétricos y asimétricos son herramientas esenciales en la protección de la privacidad y la seguridad digital, permitiendo que Bob y Alice se comuniquen de manera segura en un entorno en línea, incluso en presencia de un adversario como Eve.")
+
+
+
+
 st.markdown("Matematica")
 
 st.markdown(r"$e_K : M \rightarrow C$")
