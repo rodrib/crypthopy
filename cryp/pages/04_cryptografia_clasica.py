@@ -25,12 +25,17 @@ def cifrado_atbash(texto):
     return texto_cifrado
 
 def cifrado_columna(texto):
-    # Implementación del cifrado de columna aquí
-    pass
+    num_columnas = 3
+    longitud_texto = len(texto)
+    num_filas = (longitud_texto + num_columnas - 1) // num_columnas
+    texto += ' ' * (num_filas * num_columnas - longitud_texto)
+    columnas_original = [texto[i::num_filas] for i in range(num_filas)]
+    columnas_cifradas = ['[' + col + ']' for col in columnas_original]
+    texto_cifrado = ''.join(columnas_cifradas)
+   
+    return texto_cifrado
 
-def cifrado_vigenere(texto, clave):
-    # Implementación del cifrado de Vigenère aquí
-    pass
+
 
 def main():
     st.title("Criptografía Clásica")
@@ -48,7 +53,7 @@ def main():
     st.write("- **Cifrado de Vigenère:** Utiliza una tabla de sustitución basada en una palabra clave.")
 
     # Opciones para el usuario
-    seleccion = st.selectbox("Seleccione un tipo de cifrado:", ["Cifrado de César", "Cifrado de Atbash"])
+    seleccion = st.selectbox("Seleccione un tipo de cifrado:", ["Cifrado de César", "Cifrado de Atbash","Cifrado de columna","Cifrado de columna2"])
 
     if seleccion == "Cifrado de César":
         texto_original = st.text_area("Ingrese el texto original:")
@@ -63,15 +68,18 @@ def main():
             texto_cifrado = cifrado_atbash(texto_original)
             st.write("Texto cifrado:", texto_cifrado)
 
+    elif seleccion == "Cifrado de columna":
+        texto_original = st.text_area("Ingrese el texto original:")
+        if st.button("Cifrar"):
+            texto_cifrado = cifrado_columna(texto_original)
+            st.write("Texto cifrado:", texto_cifrado)
 
-
+  
 
 
 if __name__ == "__main__":
     main()
 
-
 st.markdown("Matematica")
-
 
 st.markdown(r"$e_K : M \rightarrow C$")
