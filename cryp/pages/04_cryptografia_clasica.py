@@ -97,8 +97,22 @@ st.write("Los cifrados asimétricos ofrecen una solución más sofisticada. En e
 st.write("En resumen, los cifrados simétricos y asimétricos son herramientas esenciales en la protección de la privacidad y la seguridad digital, permitiendo que Bob y Alice se comuniquen de manera segura en un entorno en línea, incluso en presencia de un adversario como Eve.")
 
 
+import streamlit as st
+
+st.title("Cifrados Simétricos")
+
+st.write("Como acabamos de ver, Bob y Alice necesitan la clave secreta $k$ para encriptar y desencriptar mensajes. En el caso en el que ellos dos la tengan nos encontramos ante un cifrado simétrico. Matemáticamente se usa una clave $k$ perteneciente a un espacio de posibles claves $K$ para encriptar un mensaje en claro $m$ de un espacio de posibles mensajes $M$, y el resultado es un texto cifrado $c$ perteneciente al espacio de textos cifrados $C$. Es decir, la encriptación es una función tal que:")
+st.markdown(r"$e_K : M \rightarrow C$")
+
+st.write("Así también podemos definir la función de desencriptación, que toma una clave y un texto cifrado dando como resultado un texto en claro:")
+st.latex(r"d_k : C \rightarrow M")
+st.write("tal que:")
+
+
+st.latex(r"d_k(e_k(m)) = m \quad \forall m \in M,")
+st.write("es decir, $d_k$ es la función inversa de $e_k$ para un cierto $k \in K$. Esto significa que $e_k$ es una función biyectiva y cumple que si $e_k(m) = e_k(m')$ entonces")
+st.latex(r"m = d_k(e_k(m)) = d_k(e_k(m')) = m'.")
 
 
 st.markdown("Matematica")
 
-st.markdown(r"$e_K : M \rightarrow C$")
