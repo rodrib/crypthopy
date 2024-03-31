@@ -114,5 +114,13 @@ st.write("es decir, $d_k$ es la función inversa de $e_k$ para un cierto $k \in 
 st.latex(r"m = d_k(e_k(m)) = d_k(e_k(m')) = m'.")
 
 
-st.markdown("Matematica")
+import streamlit as st
 
+st.title("Propiedades de un Cifrado Seguro")
+
+st.write("Sea $(K, M, C, e, d)$ la especificación de nuestro cifrado. Para que este sea seguro satisfactoriamente tendría que cumplir las siguientes propiedades:")
+
+st.markdown("1. $\\forall k \\in K, m \\in M$ tiene que ser fácil de computar el cifrado $e_k(m)$.")
+st.markdown("2. $\\forall k \\in K, c \\in C$ tiene que ser fácil de computar el descifrado $d_k(c)$.")
+
+st.markdown("3. Dados uno o más textos cifrados $c_1, c_2, ..., c_n \\in C$, tiene que ser computacionalmente difícil calcular los textos en claro $d_k(c_1), ..., d_k(c_n) \\in M$ sin saber la clave $k$.")
