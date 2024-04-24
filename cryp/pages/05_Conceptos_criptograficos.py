@@ -38,5 +38,31 @@ def main():
         st.write("Números Aleatorios Generados:")
         st.write(numeros_aleatorios)
 
+
+
+
+st.title("Criptoanálisis")
+st.write("El criptoanálisis es el estudio de sistemas criptográficos para detectar vulnerabilidades y descifrar información protegida sin acceso a la clave de cifrado.")
+
+import streamlit as st
+
+st.title("Términos Criptográficos")
+
+st.subheader("COA: Certificado de Autoridad de Certificación")
+st.write("Es un documento digital emitido por una Autoridad de Certificación (CA) que valida la identidad de una persona o entidad.")
+
+st.subheader("KPA: Algoritmo de Acuerdo de Clave")
+st.write("Es un protocolo criptográfico que permite a dos o más partes generar un par de claves públicas y privadas de forma segura, incluso si no comparten un canal de comunicación seguro.")
+
+st.subheader("CPA: Ataque de Texto Claro Elegido")
+st.write("Es un tipo de ataque criptográfico en el que el atacante puede elegir el texto claro que desea cifrar y observar el texto cifrado correspondiente. Esta información puede ser utilizada para debilitar la seguridad del sistema criptográfico.")
+
+st.subheader("CCA: Ataque de Texto Cifrado Elegido")
+st.write("Es un tipo de ataque criptográfico similar al CPA, pero en este caso el atacante puede elegir el texto cifrado que desea descifrar y observar el texto claro correspondiente.")
+
+st.subheader("Ataque de Canal Lateral (Side Channel Attack)")
+st.write("Es un tipo de ataque criptográfico que explota información adicional, como el tiempo de ejecución del algoritmo o el consumo de energía, para obtener información sobre la clave o el mensaje original. Esta información puede ser utilizada para debilitar la seguridad del sistema criptográfico.")
+
+
 if __name__ == "__main__":
     main()
