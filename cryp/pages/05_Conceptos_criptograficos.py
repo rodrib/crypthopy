@@ -64,5 +64,21 @@ st.subheader("Ataque de Canal Lateral (Side Channel Attack)")
 st.write("Es un tipo de ataque criptográfico que explota información adicional, como el tiempo de ejecución del algoritmo o el consumo de energía, para obtener información sobre la clave o el mensaje original. Esta información puede ser utilizada para debilitar la seguridad del sistema criptográfico.")
 
 
+st.title("Seguridad Informática vs Seguridad Computacional")
+
+resumen = """
+La seguridad informática protege datos, sistemas y redes contra amenazas digitales, mientras que la seguridad computacional 
+asegura la fiabilidad y funcionamiento adecuado de hardware y software. Es como proteger una casa: cerraduras mantienen 
+intrusos fuera (seguridad informática), mientras que la estructura y sistemas eléctricos previenen accidentes 
+(seguridad computacional).
+"""
+
+st.write(resumen)
+
+
+resumen1 = "El One-Time Pad (OTP) es un método de cifrado que utiliza una clave aleatoria del mismo tamaño que el mensaje y se utiliza solo una vez. El cifrado es teóricamente perfecto y no puede ser descifrado sin la clave."
+
+st.write(resumen1)
+
 if __name__ == "__main__":
     main()
