@@ -28,3 +28,22 @@ url_imagen = "https://braincoke.fr/assets/static/block_cipher_encryption.e9b60af
 # Mostrar la imagen en Streamlit
 st.image(url_imagen, use_column_width=True)
 
+
+st.subheader("Modos de Operación en Criptografía Simétrica")
+
+resumen = """
+En criptografía simétrica, se utilizan varios modos de operación para cifrar y descifrar datos de manera segura. Tres de los principales modos son:
+
+**Electronic Codebook (ECB):**
+Cada bloque de texto plano se cifra de forma independiente utilizando la misma clave. Sin embargo, es vulnerable a patrones repetitivos, lo que puede ser explotado por un atacante.
+
+**Cipher Block Chaining (CBC):**
+Introduce retroalimentación, combinando cada bloque de texto plano con el bloque cifrado anterior. Más seguro que ECB, pero no es paralelizable.
+
+**Counter (CTR):**
+Convierte un cifrador de bloque en un cifrador de flujo, permitiendo la encriptación paralela. Utiliza valores pseudoaleatorios (nonce) para producir texto cifrado final.
+
+Estos modos ofrecen diferentes niveles de seguridad y eficiencia en la criptografía simétrica.
+"""
+
+st.markdown(resumen)
