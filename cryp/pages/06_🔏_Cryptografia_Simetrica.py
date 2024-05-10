@@ -62,6 +62,10 @@ y descifrar información de manera segura y eficiente.
 
 st.markdown(resumen1)
 
+url_imagen2 = "https://img.brainkart.com/imagebk9/QRvrZFg.jpg"
+
+# Mostrar la imagen en Streamlit
+st.image(url_imagen2, use_column_width=True)
 
 ############
 import streamlit as st
