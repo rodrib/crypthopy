@@ -47,3 +47,17 @@ Estos modos ofrecen diferentes niveles de seguridad y eficiencia en la criptogra
 """
 
 st.markdown(resumen)
+
+url_imagen1 = "https://upload.wikimedia.org/wikipedia/commons/b/b0/BlockcipherModesofOperation.png"
+
+# Mostrar la imagen en Streamlit
+st.image(url_imagen1, use_column_width=True)
+
+st.subheader("AES")
+
+resumen1 = """El Estándar de Cifrado Avanzado (AES) es un algoritmo de cifrado simétrico ampliamente utilizado para proteger datos sensibles.
+ AES utiliza claves de 128, 192 o 256 bits para cifrar 
+y descifrar información de manera segura y eficiente.
+"""
+
+st.markdown(resumen1)
