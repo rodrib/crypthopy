@@ -61,3 +61,63 @@ y descifrar información de manera segura y eficiente.
 """
 
 st.markdown(resumen1)
+
+
+############
+import streamlit as st
+from Crypto.Util.Padding import pad, unpad
+from Crypto.Cipher import AES
+import base64
+import io
+
+# Configuración del título y descripción
+st.title("Cifrado y Descifrado de Archivos")
+st.write("Esta aplicación permite cifrar y descifrar archivos utilizando el algoritmo AES en modo CBC.")
+
+# Función para cifrar un archivo
+def cipher_file(input_file, key):
+    cipher = AES.new(key, AES.MODE_CBC)
+    cipher_text = cipher.encrypt(pad(input_file.read(), AES.block_size))
+    return cipher_text
+
+# Función para descifrar un archivo
+def decipher_file(input_file, key):
+    cipher = AES.new(key, AES.MODE_CBC)
+    plain_text = unpad(cipher.decrypt(input_file.read()), AES.block_size)
+    return plain_text
+
+# Interfaz de usuario para cargar archivos
+encrypt_file = st.file_uploader("Selecciona un archivo para cifrar", type=["txt", "pdf", "png", "jpg"])
+decrypt_file = st.file_uploader("Selecciona un archivo para descifrar", type=["enc"])
+
+if encrypt_file is not None:
+    st.write("Archivo seleccionado para cifrar:", encrypt_file.name)
+    key = st.text_input("Introduce una clave de cifrado (16, 24 o 32 caracteres)", type="password")
+    if st.button("Cifrar"):
+        if len(key) in [16, 24, 32]:
+            cipher_text = cipher_file(encrypt_file, key.encode())
+            st.success("¡El archivo ha sido cifrado exitosamente!")
+            # Botón de descarga del archivo cifrado
+            b64_cipher_text = base64.b64encode(cipher_text).decode()
+            href = f'<a href="data:file/enc;base64,{b64_cipher_text}" download="encrypted_file.enc">Descargar Archivo Cifrado</a>'
+            st.markdown(href, unsafe_allow_html=True)
+        else:
+            st.error("La longitud de la clave debe ser de 16, 24 o 32 caracteres.")
+
+if decrypt_file is not None:
+    st.write("Archivo seleccionado para descifrar:", decrypt_file.name)
+    key = st.text_input("Introduce la clave de cifrado utilizada", type="password")
+    if st.button("Descifrar"):
+        if len(key) in [16, 24, 32]:
+            decrypted_file = decipher_file(decrypt_file, key.encode())
+            try:
+                decrypted_text = decrypted_file.decode('utf-8')
+                st.success("¡El archivo ha sido descifrado exitosamente!")
+                # Mostrar el contenido del archivo descifrado
+                st.text(decrypted_text)
+            except UnicodeDecodeError:
+                decrypted_text = decrypted_file.decode('latin1')
+                st.success("¡El archivo ha sido descifrado exitosamente!")
+                st.text(decrypted_text)
+        else:
+            st.error("La longitud de la clave debe ser de 16, 24 o 32 caracteres.")
