@@ -78,50 +78,60 @@ import io
 st.title("Cifrado y Descifrado de Archivos")
 st.write("Esta aplicación permite cifrar y descifrar archivos utilizando el algoritmo AES en modo CBC.")
 
-# Función para cifrar un archivo
-def cipher_file(input_file, key):
-    cipher = AES.new(key, AES.MODE_CBC)
-    cipher_text = cipher.encrypt(pad(input_file.read(), AES.block_size))
-    return cipher_text
 
-# Función para descifrar un archivo
-def decipher_file(input_file, key):
-    cipher = AES.new(key, AES.MODE_CBC)
-    plain_text = unpad(cipher.decrypt(input_file.read()), AES.block_size)
-    return plain_text
+###########
+import streamlit as st
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import padding
 
-# Interfaz de usuario para cargar archivos
-encrypt_file = st.file_uploader("Selecciona un archivo para cifrar", type=["txt", "pdf", "png", "jpg"])
-decrypt_file = st.file_uploader("Selecciona un archivo para descifrar", type=["enc"])
+# Function to encrypt using AES in CBC mode
+def encrypt_AES_CBC(data, key, iv):
+    padder = padding.PKCS7(128).padder()  
+    padded_data = padder.update(data.encode('utf-8'))  
+    padded_data += padder.finalize()
 
-if encrypt_file is not None:
-    st.write("Archivo seleccionado para cifrar:", encrypt_file.name)
-    key = st.text_input("Introduce una clave de cifrado (16, 24 o 32 caracteres)", type="password")
-    if st.button("Cifrar"):
-        if len(key) in [16, 24, 32]:
-            cipher_text = cipher_file(encrypt_file, key.encode())
-            st.success("¡El archivo ha sido cifrado exitosamente!")
-            # Botón de descarga del archivo cifrado
-            b64_cipher_text = base64.b64encode(cipher_text).decode()
-            href = f'<a href="data:file/enc;base64,{b64_cipher_text}" download="encrypted_file.enc">Descargar Archivo Cifrado</a>'
-            st.markdown(href, unsafe_allow_html=True)
-        else:
-            st.error("La longitud de la clave debe ser de 16, 24 o 32 caracteres.")
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())  
+    encryptor = cipher.encryptor()  
+    ciphertext = encryptor.update(padded_data) + encryptor.finalize()  
 
-if decrypt_file is not None:
-    st.write("Archivo seleccionado para descifrar:", decrypt_file.name)
-    key = st.text_input("Introduce la clave de cifrado utilizada", type="password")
-    if st.button("Descifrar"):
-        if len(key) in [16, 24, 32]:
-            decrypted_file = decipher_file(decrypt_file, key.encode())
-            try:
-                decrypted_text = decrypted_file.decode('utf-8')
-                st.success("¡El archivo ha sido descifrado exitosamente!")
-                # Mostrar el contenido del archivo descifrado
-                st.text(decrypted_text)
-            except UnicodeDecodeError:
-                decrypted_text = decrypted_file.decode('latin1')
-                st.success("¡El archivo ha sido descifrado exitosamente!")
-                st.text(decrypted_text)
-        else:
-            st.error("La longitud de la clave debe ser de 16, 24 o 32 caracteres.")
+    return ciphertext
+
+# Function to decrypt using AES in CBC mode
+def decrypt_AES_CBC(ciphertext, key, iv):
+    decryptor = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend()).decryptor()  
+    decrypted_data = decryptor.update(ciphertext) + decryptor.finalize() 
+
+    unpadder = padding.PKCS7(128).unpadder()  
+    unpadded_data = unpadder.update(decrypted_data)  
+    unpadded_data += unpadder.finalize()
+
+    return unpadded_data.decode('utf-8')  
+
+# Configuración del título y descripción
+st.title("Cifrado y Descifrado de Textos")
+st.write("Esta aplicación permite cifrar y descifrar texto utilizando el algoritmo AES en modo CBC.")
+
+# Interfaz de usuario para ingresar el texto y la clave
+plaintext = st.text_input("Ingresa el texto a cifrar o descifrar:")
+key = st.text_input("Ingresa la clave (16, 24 o 32 bytes) para el cifrado o descifrado:", type="password")
+iv = st.text_input("Ingresa el vector de inicialización (16 bytes):")
+
+# Botón para cifrar el texto
+if st.button("Cifrar"):
+    if len(key) in [16, 24, 32] and len(iv) == 16:
+        encrypted_text = encrypt_AES_CBC(plaintext, key.encode('utf-8'), iv.encode('utf-8'))  
+        st.success(f'Texto cifrado: {encrypted_text.hex()}')
+    else:
+        st.error("La longitud de la clave debe ser de 16, 24 o 32 bytes, y la del IV debe ser de 16 bytes.")
+
+# Botón para descifrar el texto
+if st.button("Descifrar"):
+    if len(key) in [16, 24, 32] and len(iv) == 16:
+        try:
+            decrypted_text = decrypt_AES_CBC(bytes.fromhex(plaintext), key.encode('utf-8'), iv.encode('utf-8'))  
+            st.success(f'Texto descifrado: {decrypted_text}')
+        except ValueError:
+            st.error("El texto cifrado debe estar en formato hexadecimal.")
+    else:
+        st.error("La longitud de la clave debe ser de 16, 24 o 32 bytes, y la del IV debe ser de 16 bytes.")
