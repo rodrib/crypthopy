@@ -183,3 +183,5 @@ if uploaded_file is not None:
             st.success(f'File {uploaded_file.name} decrypted.')
             st.download_button('Download Decrypted File', decrypted_data, file_name=f"{output_filename}.txt")
 
+#https://www.teoria.com/jra/aes/index.html
+
