@@ -143,51 +143,43 @@ from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import padding
 
-def encrypt_file_AES_CBC(input_file, output_encrypted_file, key, iv):
-    with open(input_file, 'rb') as file:
-        data = file.read()
-
+def encrypt_file_AES_CBC(data, key, iv):
     padder = padding.PKCS7(128).padder()
     padded_data = padder.update(data) + padder.finalize()
 
     cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
     encryptor = cipher.encryptor()
     ciphertext = encryptor.update(padded_data) + encryptor.finalize()
+    return ciphertext
 
-    with open(output_encrypted_file, 'wb') as file:
-        file.write(ciphertext)
-
-def decrypt_file_AES_CBC(input_encrypted_file, output_decrypted_file, key, iv):
-    with open(input_encrypted_file, 'rb') as file:
-        ciphertext = file.read()
-
+def decrypt_file_AES_CBC(ciphertext, key, iv):
     decryptor = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend()).decryptor()
     decrypted_data = decryptor.update(ciphertext) + decryptor.finalize()
 
     unpadder = padding.PKCS7(128).unpadder()
     unpadded_data = unpadder.update(decrypted_data) + unpadder.finalize()
+    return unpadded_data
 
-    with open(output_decrypted_file, 'wb') as file:
-        file.write(unpadded_data)
-
-st.title('AES Encryption/Decryption')
+st.title('Cifrado/Descifrado AES')
 
 key = st.text_input('Enter the AES key (32 bytes):', value='MySuperSecretKey2222222222222222')
 iv = st.text_input('Enter the AES IV (16 bytes):', value='MySuperSecretIV0')
 
-uploaded_file = st.file_uploader("Choose a file to encrypt/decrypt", type=["exe", "txt", "bin"])
+uploaded_file = st.file_uploader("Choose a file to encrypt/decrypt", type=["txt", "bin"])
 
 if uploaded_file is not None:
     action = st.selectbox('Choose action:', ['Encrypt', 'Decrypt'])
     output_filename = st.text_input('Enter output file name:', value='output_file')
 
     if st.button('Process'):
-        with open(uploaded_file.name, 'wb') as f:
-            f.write(uploaded_file.getbuffer())
+        data = uploaded_file.read()
         
         if action == 'Encrypt':
-            encrypt_file_AES_CBC(uploaded_file.name, output_filename, key.encode(), iv.encode())
-            st.success(f'File {uploaded_file.name} encrypted and saved as {output_filename}.')
+            encrypted_data = encrypt_file_AES_CBC(data, key.encode(), iv.encode())
+            st.success(f'File {uploaded_file.name} encrypted.')
+            st.download_button('Download Encrypted File', encrypted_data, file_name=f"{output_filename}.bin")
         else:
-            decrypt_file_AES_CBC(uploaded_file.name, output_filename, key.encode(), iv.encode())
-            st.success(f'File {uploaded_file.name} decrypted and saved as {output_filename}.')
+            decrypted_data = decrypt_file_AES_CBC(data, key.encode(), iv.encode())
+            st.success(f'File {uploaded_file.name} decrypted.')
+            st.download_button('Download Decrypted File', decrypted_data, file_name=f"{output_filename}.txt")
+
