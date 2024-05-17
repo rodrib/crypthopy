@@ -135,3 +135,59 @@ if st.button("Descifrar"):
             st.error("El texto cifrado debe estar en formato hexadecimal.")
     else:
         st.error("La longitud de la clave debe ser de 16, 24 o 32 bytes, y la del IV debe ser de 16 bytes.")
+
+
+#############################
+import streamlit as st
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import padding
+
+def encrypt_file_AES_CBC(input_file, output_encrypted_file, key, iv):
+    with open(input_file, 'rb') as file:
+        data = file.read()
+
+    padder = padding.PKCS7(128).padder()
+    padded_data = padder.update(data) + padder.finalize()
+
+    cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+    encryptor = cipher.encryptor()
+    ciphertext = encryptor.update(padded_data) + encryptor.finalize()
+
+    with open(output_encrypted_file, 'wb') as file:
+        file.write(ciphertext)
+
+def decrypt_file_AES_CBC(input_encrypted_file, output_decrypted_file, key, iv):
+    with open(input_encrypted_file, 'rb') as file:
+        ciphertext = file.read()
+
+    decryptor = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend()).decryptor()
+    decrypted_data = decryptor.update(ciphertext) + decryptor.finalize()
+
+    unpadder = padding.PKCS7(128).unpadder()
+    unpadded_data = unpadder.update(decrypted_data) + unpadder.finalize()
+
+    with open(output_decrypted_file, 'wb') as file:
+        file.write(unpadded_data)
+
+st.title('AES Encryption/Decryption')
+
+key = st.text_input('Enter the AES key (32 bytes):', value='MySuperSecretKey2222222222222222')
+iv = st.text_input('Enter the AES IV (16 bytes):', value='MySuperSecretIV0')
+
+uploaded_file = st.file_uploader("Choose a file to encrypt/decrypt", type=["exe", "txt", "bin"])
+
+if uploaded_file is not None:
+    action = st.selectbox('Choose action:', ['Encrypt', 'Decrypt'])
+    output_filename = st.text_input('Enter output file name:', value='output_file')
+
+    if st.button('Process'):
+        with open(uploaded_file.name, 'wb') as f:
+            f.write(uploaded_file.getbuffer())
+        
+        if action == 'Encrypt':
+            encrypt_file_AES_CBC(uploaded_file.name, output_filename, key.encode(), iv.encode())
+            st.success(f'File {uploaded_file.name} encrypted and saved as {output_filename}.')
+        else:
+            decrypt_file_AES_CBC(uploaded_file.name, output_filename, key.encode(), iv.encode())
+            st.success(f'File {uploaded_file.name} decrypted and saved as {output_filename}.')
