@@ -74,9 +74,6 @@ from Crypto.Cipher import AES
 import base64
 import io
 
-# Configuración del título y descripción
-st.title("Cifrado y Descifrado de Archivos")
-st.write("Esta aplicación permite cifrar y descifrar archivos utilizando el algoritmo AES en modo CBC.")
 
 
 ###########
