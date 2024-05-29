@@ -182,3 +182,46 @@ if uploaded_file is not None:
 
 #https://www.teoria.com/jra/aes/index.html
 
+#############
+
+import streamlit as st
+import hashlib
+
+# Título y descripción principal
+st.title(":mortar_board: Funciones de Hash")
+st.markdown("##")
+st.markdown("""
+### Resistencia a Colisiones y a Preimágenes
+Una **función de hash** es una función que toma una entrada y devuelve un valor de longitud fija, que parece aleatorio. Las funciones de hash se utilizan en una variedad de aplicaciones, incluyendo criptografía, almacenamiento de contraseñas, y verificación de integridad de datos.
+
+#### Propiedades clave de las funciones de hash:
+- **Resistencia a colisiones**: Es difícil encontrar dos entradas diferentes que produzcan el mismo valor de hash.
+- **Resistencia a preimágenes**: Dado un valor de hash, es difícil encontrar cualquier entrada que lo produzca.
+
+Estas propiedades aseguran que las funciones de hash sean seguras y fiables para su uso en aplicaciones de seguridad.
+""")
+
+
+# Mostrar una imagen desde una URL
+image_url = "https://cadenadebloques.io/wp-content/uploads/2021/07/Hash.jpg"
+st.image(image_url, caption='Funciones de Hash', use_column_width=True)
+
+
+# Ejemplo de una función de hash segura
+st.subheader("Ejemplo de una función de hash segura:")
+st.code("""
+import hashlib
+
+def hash_data(data):
+    return hashlib.sha256(data.encode()).hexdigest()
+
+data = "Tu entrada de ejemplo"
+hash_result = hash_data(data)
+st.write("Resultado del hash:", hash_result)
+""")
+
+# Mostrar el resultado de hash en tiempo real
+data_input = st.text_input("Ingresa un dato para hacerle hash:")
+if data_input:
+    hash_result = hashlib.sha256(data_input.encode()).hexdigest()
+    st.write("Resultado del hash:", hash_result)
