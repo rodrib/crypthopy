@@ -46,3 +46,42 @@ st.write("- **Adición:** '(a + b) mod p'.")
 st.write("- **Sustracción:** '(a - b) mod p'.")
 st.write("- **Multiplicación:** '(a * b) mod p'.")
 st.write("- **Exponentiación:** '(a^b) mod p'. Esto se calcula de manera eficiente mediante el algoritmo de exponenciación modular.")
+
+
+import streamlit as st
+
+st.title("Intercambio de Llaves y el Problema del Logaritmo Discreto")
+
+st.subheader("Intercambio de Llaves")
+
+st.write("""
+El intercambio de llaves es un proceso fundamental en la criptografía que permite a dos partes (por ejemplo, Alice y Bob) establecer una llave compartida sobre un canal inseguro. Una de las técnicas más conocidas para el intercambio de llaves es el protocolo de Diffie-Hellman.
+""")
+
+st.write("""
+En el protocolo de Diffie-Hellman, ambos participantes acuerdan públicamente dos números: una base \( g \) y un módulo \( p \). Cada participante elige un número secreto privado (\( a \) para Alice y \( b \) para Bob) y calcula un valor público a partir de estos (\( g^a \mod p \) para Alice y \( g^b \mod p \) para Bob). Luego, intercambian estos valores públicos y, utilizando su propio número privado, cada uno puede calcular la llave compartida:
+""")
+
+st.write("""
+Para Alice:
+\[ \text{Clave compartida} = (g^b \mod p)^a \mod p \]
+
+Para Bob:
+\[ \text{Clave compartida} = (g^a \mod p)^b \mod p \]
+
+Debido a la propiedad matemática de las exponenciaciones modulares, ambas partes obtienen la misma llave compartida.
+""")
+
+st.subheader("Problema del Logaritmo Discreto")
+
+st.write("""
+El problema del logaritmo discreto es un problema matemático difícil que constituye la base de la seguridad del protocolo de Diffie-Hellman y de muchos otros sistemas criptográficos. En términos simples, el problema es el siguiente:
+
+Dado un número \( y \) que es el resultado de \( g^x \mod p \), encontrar el exponente \( x \) es computacionalmente difícil.
+
+Formalmente, si se conoce \( y = g^x \mod p \), determinar \( x \) es el problema del logaritmo discreto. La dificultad de este problema asegura que, incluso si un atacante intercepta los valores públicos intercambiados, no pueda fácilmente determinar la llave compartida.
+""")
+
+st.write("""
+El problema del logaritmo discreto es considerado difícil porque, para números grandes, no existe un algoritmo eficiente que pueda resolverlo en un tiempo razonable. Esto proporciona la base para la seguridad de varios sistemas criptográficos.
+""")
