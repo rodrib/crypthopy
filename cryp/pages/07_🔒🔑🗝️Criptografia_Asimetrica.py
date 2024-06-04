@@ -85,3 +85,32 @@ Formalmente, si se conoce \( y = g^x \mod p \), determinar \( x \) es el problem
 st.write("""
 El problema del logaritmo discreto es considerado difícil porque, para números grandes, no existe un algoritmo eficiente que pueda resolverlo en un tiempo razonable. Esto proporciona la base para la seguridad de varios sistemas criptográficos.
 """)
+
+# Título y descripción principal
+st.title(":closed_lock_with_key: Intercambio de Claves Diffie-Hellman")
+
+# Descripción del protocolo Diffie-Hellman
+st.markdown("""
+El intercambio de claves **Diffie-Hellman (D-H)** es un protocolo fundamental que permite a dos partes establecer una clave secreta compartida a través de un canal inseguro, como internet.
+
+### Ejemplo de funcionamiento:
+
+1. **Alice y Bob acuerdan un módulo grande** `p` **y un generador** `g`.
+2. **Alice elige un secreto aleatorio** `a` **y calcula** `A = g^a mod p`.
+3. **Bob elige un secreto aleatorio** `b` **y calcula** `B = g^b mod p`.
+4. **Alice envía** `A` **a Bob y Bob envía** `B` **a Alice**.
+5. **Alice calcula** `K = B^a mod p`.
+6. **Bob calcula** `K = A^b mod p`.
+
+### Seguridad:
+
+La seguridad del protocolo D-H se basa en la dificultad de calcular el logaritmo discreto.
+
+### Problema del logaritmo discreto:
+
+- **Definición:** Dado un módulo `p`, un generador `g` y un elemento `h` en el grupo cíclico `Z/pZ`, encontrar el entero `x` tal que `g^x = h mod p`.
+
+### Dificultad:
+
+El problema del logaritmo discreto se considera computacionalmente difícil para módulos grandes. No se conoce un algoritmo eficiente para resolverlo en general.
+""")
