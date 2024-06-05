@@ -79,3 +79,25 @@ La seguridad del protocolo D-H se basa en la dificultad de calcular el logaritmo
 
 El problema del logaritmo discreto se considera computacionalmente difícil para módulos grandes. No se conoce un algoritmo eficiente para resolverlo en general.
 """)
+
+st.markdown("""
+    ### Compromiso
+
+En 1976, Whitfield Diffie y Martin Hellman publicaron un método para establecer un secreto compartido entre dos partes, permitiendo un canal de comunicación eficiente. Este método genera una llave privada conocida por ambas partes para encriptar y desencriptar información simétricamente. Aunque la criptografía asimétrica es ineficiente para compartir muchos mensajes extensos, es ideal para compartir una llave de encriptación simétrica.
+
+El protocolo Diffie-Hellman establece un canal de comunicación asimétrica para compartir información en una única ocasión por sesión. Las partes generan una llave simétrica a partir de sus claves privadas y públicas, permitiendo un canal de comunicación simétrico descifrable solo por ellos con una llave compartida.
+""")
+
+st.markdown("""
+    ### Protocolo
+""")
+
+import base64
+# Nota antes de la animación
+st.markdown("**Nota:** En la animación que sigue, cada parte tiene un espacio privado (seguro para los secretos) y comparten un espacio público disponible para ellos y cualquier tercero.")
+
+# URL de la animación GIF
+animation_url = "https://mantimantilla.github.io/Theory-of-Computation-Encryption/_images/Animacion-1.gif"
+
+# Mostrar la animación desde la URL
+st.markdown(f'<img src="{animation_url}" alt="Animación del intercambio de claves Diffie-Hellman">', unsafe_allow_html=True)
