@@ -101,3 +101,39 @@ animation_url = "https://mantimantilla.github.io/Theory-of-Computation-Encryptio
 
 # Mostrar la animación desde la URL
 st.markdown(f'<img src="{animation_url}" alt="Animación del intercambio de claves Diffie-Hellman">', unsafe_allow_html=True)
+
+
+# Segunda parte de la descripción
+st.markdown("""
+            
+En lugar de Alice y Bob definir una llave pública y una llave privada respectivamente, solo nos interesa que definan su llave privada (`a` y `b`) y que acuerden entre sí, expuestos al público, dos valores `g` y `p`.
+""")
+
+# URL de la segunda animación GIF
+animation_url_2 = "https://mantimantilla.github.io/Theory-of-Computation-Encryption/_images/Animacion-2.gif"
+
+# Mostrar la segunda animación desde la URL
+st.markdown(f'<img src="{animation_url_2}" alt="Animación del intercambio de claves Diffie-Hellman, segunda parte">', unsafe_allow_html=True)
+
+# Tercera parte de la descripción
+st.markdown("""
+Note que al pie de cada región llevamos un registro de las variables a las que han tenido acceso sus respectivos usuarios.
+""")
+
+# URL de la tercera animación GIF
+animation_url_3 = "https://mantimantilla.github.io/Theory-of-Computation-Encryption/_images/Animacion-3.gif"
+
+# Mostrar la tercera animación desde la URL
+st.markdown(f'<img src="{animation_url_3}" alt="Registro de variables en el intercambio de claves Diffie-Hellman">', unsafe_allow_html=True)
+
+
+# Cuarta parte de la descripción
+st.markdown("""
+Con sus respectivas claves privadas, Alice y Bob computan un valor combinado con el generador `g` (recuerde que `g` es público). Este proceso de ‘mezclar’ los valores tiene un sentido matemático específico que impide que se pueda deshacer la operación (No es imposible pero sí en exceso difícil y costoso). Respectivamente, Alice y Bob produjeron los valores `ag` y `bg` de los cuales no se pueden inferir las claves privadas `a` y `b`. Sin `p`, esta operación es imposible.
+""")
+
+# URL de la cuarta animación GIF
+animation_url_4 = "https://mantimantilla.github.io/Theory-of-Computation-Encryption/_images/Animacion-4.gif"
+
+# Mostrar la cuarta animación desde la URL
+st.markdown(f'<img src="{animation_url_4}" alt="Proceso de mezclar valores en el intercambio de claves Diffie-Hellman">', unsafe_allow_html=True)
