@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("Aritmética Modular")
+st.title(":🧮 : Aritmética Modular")
 
 st.write("La aritmética modular es un sistema matemático que trata con números enteros, pero en lugar de trabajar con números continuos, se enfoca en los residuos de la división.")
 
