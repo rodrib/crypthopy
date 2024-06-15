@@ -211,3 +211,87 @@ Forward secrecy (PFS)
 Forward secrecy es la intención de proteger mensajes pasados en caso de que su cifrado haya sido guardado por terceros y el secreto compartido sea publicado. En este caso, la responsabilidad sobre la liberación de estos mensajes no recae sobre alguna falla de Diffie-Hellman. En un inicio mencionamos la noción de una sesión de comunicación. La idea de tener sesiones cortas sobre las cuales habilitar el canal de comunicación es beneficiosa ya que cada vez que se inicie una sesión, la llave compartida puede generarse desde cero en cada ocasión, de forma que, si se libera la clave, solo los mensajes de esa sesión son vulnerables. En teoría, nada impide que utilicemos una nueva llave para cada mensaje o para cada sub-cadena de 126 bits o menos. Recordemos que comunicarse por encriptación asimétrica es un proceso costoso, por lo que quisiéramos minimizar su uso. Cada vez que intercambiamos claves y generamos un secreto compartido estamos efectuando encriptación asimétrica, ya depende de los dueños del canal establecer la frecuencia con la que se generan estas llaves efímeras.
 """)
 
+###########
+
+import streamlit as st
+
+class Partido:
+    # Podemos inicializar cada partido con una llave privada.
+    def __init__(self, private_key, important_message):
+        # Definimos la llave privada como una variable protegida
+        self.__private_key = private_key
+        
+        # Definimos el mensaje que Alice va a querer enviar a Bob.
+        self.__message = important_message
+        
+        # Por lo pronto no hemos establecido el secreto compartido.
+        self.__shared_key = None
+    
+    # A un partido podemos pedirle su clave pública dados un generador g y un módulo p.
+    def calculate_public_key(self, g, p):
+        # P_A = g^a mod p ó
+        # P_B = g^b mod p
+        return g ** self.__private_key % p
+    
+    # Si conocemos la clave pública del otro partido podemos conocer el secreto compartido.
+    def assign_shared_secret(self, others_public_key, p):
+        # S = B^a mod p ó
+        # S = A^b mod p
+        self.__shared_key = others_public_key ** self.__private_key % p
+    
+    # Si tenemos un secreto compartido, podemos cifrar y entregar el mensaje cifrado.
+    # Si aún no tenemos un secreto compartido, el mensaje cifrado es vacío.
+    # Este cifrado es simple y potencialmente vulnerable, pero un cifrado robusto no es nuestro enfoque del momento,
+    # por lo pronto, solo interesa que el cifrado sea simétrico.
+    def give_cypher(self):
+        outward_cypher = ""
+        if self.__shared_key:
+            for char in self.__message:
+                outward_cypher += chr(ord(char) + self.__shared_key)
+        return outward_cypher
+    
+    # Dado un cifrado público, probamos descifrarlo con el secreto compartido.
+    def decypher(self, inward_cypher):
+        message = ""
+        for char in inward_cypher:
+            message += chr(ord(char) - self.__shared_key)
+        return message
+
+# Interfaz de Streamlit
+st.title("Intercambio de Claves Diffie-Hellman")
+
+# Inputs para los usuarios
+private_key_alice = st.number_input("Llave privada de Alice", min_value=1, value=5, step=1)
+private_key_bob = st.number_input("Llave privada de Bob", min_value=1, value=7, step=1)
+message = st.text_input("Mensaje importante de Alice a Bob", "Hola Bob!")
+
+# Crear instancias de Alice y Bob
+alice = Partido(private_key_alice, message)
+bob = Partido(private_key_bob, "")
+
+# Generador y módulo público
+g = 9
+p = 23
+
+# Calcular claves públicas
+public_key_alice = alice.calculate_public_key(g, p)
+public_key_bob = bob.calculate_public_key(g, p)
+
+# Asignar secretos compartidos
+alice.assign_shared_secret(public_key_bob, p)
+bob.assign_shared_secret(public_key_alice, p)
+
+# Cifrar el mensaje
+cypher_message = alice.give_cypher()
+
+# Descifrar el mensaje
+decyphered_message = bob.decypher(cypher_message)
+
+# Mostrar resultados
+st.subheader("Resultados")
+st.write(f"Clave pública de Alice: {public_key_alice}")
+st.write(f"Clave pública de Bob: {public_key_bob}")
+st.write(f"Secreto compartido de Alice: {alice._Partido__shared_key}")
+st.write(f"Secreto compartido de Bob: {bob._Partido__shared_key}")
+st.write(f"Mensaje cifrado: {cypher_message}")
+st.write(f"Mensaje descifrado por Bob: {decyphered_message}")
