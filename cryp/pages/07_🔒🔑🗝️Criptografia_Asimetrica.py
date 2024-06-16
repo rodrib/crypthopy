@@ -295,3 +295,36 @@ st.write(f"Secreto compartido de Alice: {alice._Partido__shared_key}")
 st.write(f"Secreto compartido de Bob: {bob._Partido__shared_key}")
 st.write(f"Mensaje cifrado: {cypher_message}")
 st.write(f"Mensaje descifrado por Bob: {decyphered_message}")
+
+
+######
+import streamlit as st
+
+st.title(":closed_lock_with_key: Teoría del RSA")
+
+st.write("""
+En la sección de Diffie-Hellman, exploramos el comportamiento de un sistema de intercambio de claves cuyo propósito es establecer un canal de comunicación con cifrado simétrico. Para evaluar la efectividad de este método, usamos cifrados escogidos de forma arbitraria, así como sesiones para las llaves efímeras de un único mensaje. Estas decisiones no son características de Diffie-Hellman, ya que es un sistema que contempla solo el primer requisito para establecer comunicación.
+
+### Introducción al RSA
+
+Introduciremos el RSA. Nombrado así por los tres investigadores que publicaron su hallazgo en 1977, el RSA es un sistema criptográfico que, al igual que Diffie-Hellman, contempla una fase de generación y distribución de llaves, pero también incluye métodos de encriptación y descifrado específicos del protocolo.
+
+### Generación y Distribución de Llaves
+
+- **Fase de Generación de Llaves**:
+    - En RSA, se generan dos claves: una clave pública y una clave privada.
+    - La clave pública se distribuye abiertamente, mientras que la clave privada se mantiene secreta.
+
+- **Distribución de Llaves**:
+    - La clave pública se utiliza para cifrar mensajes, y solo la clave privada correspondiente puede descifrarlos.
+
+### Encripción y Descifrado
+
+- **Encripción**:
+    - Para enviar un mensaje seguro, el remitente utiliza la clave pública del destinatario para cifrar el mensaje.
+
+- **Descifrado**:
+    - El destinatario utiliza su clave privada para descifrar el mensaje recibido.
+
+El RSA, por lo tanto, no solo facilita el intercambio de claves, sino que también asegura que los mensajes cifrados solo puedan ser descifrados por el destinatario previsto, garantizando así la confidencialidad y la integridad de la comunicación.
+""")
