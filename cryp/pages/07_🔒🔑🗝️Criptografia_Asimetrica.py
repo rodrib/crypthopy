@@ -328,3 +328,15 @@ Introduciremos el RSA. Nombrado así por los tres investigadores que publicaron 
 
 El RSA, por lo tanto, no solo facilita el intercambio de claves, sino que también asegura que los mensajes cifrados solo puedan ser descifrados por el destinatario previsto, garantizando así la confidencialidad y la integridad de la comunicación.
 """)
+
+
+st.header("Idea General")
+
+st.write("""
+En el caso de la criptografía simétrica, debe establecerse una clave única para cada canal de comunicación. Si, volviendo a nuestro ejemplo ilustrativo del Diffie-Hellman, muchas otras personas quisieran comunicarse con Alice con cifrado simétrico, esta tendría que establecer una llave secreta con cada uno de estos.
+
+Un acercamiento a la criptografía asimétrica más rudimentario no es muy distinto, ya que un destinatario de un mensaje tiene una llave pública única con la que debería encriptarse su mensaje para que este pueda descifrarlo con su clave privada. En este caso, la cantidad de llaves que Alice debe manejar en función del destinatario es mínima. Alice tan solo contempla su clave pública, con la que todos pueden encriptar un mensaje destinado a ella, y su clave privada, con la que descifrará todo mensaje destinado a ella.
+
+Una analogía común es aquella del candado y la llave, donde si Alice quiere recibir un mensaje de Bob, le puede prestar una caja con un candado sin llave. Bob empaca su mensaje y lo sella con el candado y despacha la caja para donde Alice. Alice, propietaria de la llave, abre el candado y lee el mensaje de Bob. Es evidente que el candado es el equivalente a una llave pública y la llave del candado su complemento privado.
+""")
+
