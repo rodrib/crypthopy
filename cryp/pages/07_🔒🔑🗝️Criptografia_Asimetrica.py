@@ -340,3 +340,40 @@ Un acercamiento a la criptografía asimétrica más rudimentario no es muy disti
 Una analogía común es aquella del candado y la llave, donde si Alice quiere recibir un mensaje de Bob, le puede prestar una caja con un candado sin llave. Bob empaca su mensaje y lo sella con el candado y despacha la caja para donde Alice. Alice, propietaria de la llave, abre el candado y lee el mensaje de Bob. Es evidente que el candado es el equivalente a una llave pública y la llave del candado su complemento privado.
 """)
 
+#########3
+########
+
+import streamlit as st
+
+st.title("Teoría del RSA")
+
+st.subheader("Definición de la Función φ de Euler")
+
+st.markdown("""
+Definición: La función φ, denominada φ de Euler, se define para un número \( n \) entero positivo de la siguiente forma:
+""")
+
+st.latex(r'''\phi: \mathbb{Z}^+ \to \mathbb{N}''')
+
+st.latex(r'''\phi(n) = | \{ k \in \mathbb{Z}^+ \mid k \leq n, \gcd(k, n) = 1 \} |''')
+
+st.markdown("""
+es decir, φ(n) indica la cantidad de primos relativos menores o iguales a \( n \).
+
+Esta función está presente en varios resultados importantes de la teoría de números y algunas de sus propiedades se usan en la implementación del RSA. En primer lugar, de su definición es claro que:
+""")
+
+st.latex(r'''\phi(p) = p - 1 \text{ si } p \text{ es un primo.}''')
+
+st.markdown("""
+Por otro lado, un resultado muy útil y no tan obvio de esta función es que es multiplicativa. Esto quiere decir que para cualesquiera dos números \( m \) y \( n \) primos relativos se tiene:
+""")
+
+st.latex(r'''\phi(mn) = \phi(m) \phi(n)''')
+
+st.markdown("""
+Existen distintas formas de demostrar este hecho, como por ejemplo usando técnicas de teoría de números como la inversión de Möbius. Otra forma más avanzada de demostrar esta propiedad es que es un corolario del teorema chino de los residuos de la teoría de anillos (Esto puede verse en la página 265 de la tercera edición del libro de Álgebra Abstracta de Dummit y Foote).
+
+Finalmente, es importante el siguiente teorema:
+""")
+
