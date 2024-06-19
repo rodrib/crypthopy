@@ -1,22 +1,20 @@
 import streamlit as st
 from PIL import Image
+import requests
+from io import BytesIO
 
-
-#hola
 # Título de la aplicación
 st.title("Criptografía")
 
-# Ruta de la imagen en la misma carpeta que el archivo main.py
-image_path = "cryptography-agus.jpeg"  # Cambia "cryptography-agus.jpeg" por el nombre de tu imagen
+# URL de la nueva imagen
+image_url = "https://www.fortinet.com/content/fortinet-com/zh_tw/resources/cyberglossary/what-is-cryptography/_jcr_content/par/c05_container_copy_c/par/c28_image_copy_copy.img.jpg/1701209624270.jpg"
 
-#fixed imagen
-# Cargar y mostrar la imagen
-try:
-    image = Image.open(image_path)
-    # Agregar la imagen debajo del título
-    st.image(image, caption="Criptografía", use_column_width=True)
-except FileNotFoundError:
-    st.error("La imagen no se pudo encontrar. Asegúrate de que el archivo de imagen está en la misma carpeta que el archivo main.py.")
+# Cargar la imagen desde la URL
+response = requests.get(image_url)
+image = Image.open(BytesIO(response.content))
+
+# Agregar la imagen debajo del título
+st.image(image, caption="Criptografía", use_column_width=True)
 
 # Título y definición de la criptografía
 st.header("Introducción")
