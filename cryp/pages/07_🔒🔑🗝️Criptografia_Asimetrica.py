@@ -387,4 +387,85 @@ Sean \(a\) y \(n\) enteros positivos, primos relativos, entonces se tiene la con
 """)
 st.latex(r'''n^{\phi(a)} \equiv 1 \mod a''')
 
+####### Firma Digital
+
+import streamlit as st
+import hashlib
+from Crypto.PublicKey import RSA
+from Crypto.Signature import pkcs1_15
+from Crypto.Hash import SHA256
+import base64
+
+st.title("Firma digital con RSA")
+
+st.markdown("""
+La firma digital permite garantizar la autenticidad e integridad de un mensaje o documento. En el caso de RSA, el proceso funciona de la siguiente manera:
+""")
+
+st.markdown("""
+1. **Generación de claves**: Se generan un par de claves, una clave privada \(d\) y una clave pública \(e\). La clave privada se mantiene en secreto, mientras que la clave pública se distribuye.
+2. **Creación del hash**: Se calcula un hash criptográfico del mensaje que se desea firmar. El hash es un resumen digital del mensaje que permite verificar su integridad.
+3. **Firma**: El hash se cifra con la clave privada \(d\) para generar la firma digital.
+4. **Verificación**: El receptor del mensaje utiliza la clave pública \(e\) para descifrar la firma digital.
+    - Si el valor descifrado coincide con el hash calculado del mensaje original, se verifica la autenticidad e integridad del mensaje.
+""")
+
+# Generate RSA keys
+def generate_keys():
+    key = RSA.generate(2048)
+    private_key = key.export_key()
+    public_key = key.publickey().export_key()
+    return private_key, public_key
+
+# Create hash of the message
+def create_hash(message):
+    hash_obj = SHA256.new(message.encode('utf-8'))
+    return hash_obj
+
+# Sign the message
+def sign_message(private_key, hash_obj):
+    rsa_private_key = RSA.import_key(private_key)
+    signature = pkcs1_15.new(rsa_private_key).sign(hash_obj)
+    return base64.b64encode(signature).decode('utf-8')
+
+# Verify the signature
+def verify_signature(public_key, signature, message):
+    rsa_public_key = RSA.import_key(public_key)
+    hash_obj = create_hash(message)
+    signature_bytes = base64.b64decode(signature.encode('utf-8'))
+    try:
+        pkcs1_15.new(rsa_public_key).verify(hash_obj, signature_bytes)
+        return True
+    except (ValueError, TypeError):
+        return False
+
+# Streamlit interface
+if 'private_key' not in st.session_state:
+    st.session_state.private_key, st.session_state.public_key = generate_keys()
+
+st.markdown("### 1. Generación de claves")
+st.text_area("Clave privada (mantener en secreto):", st.session_state.private_key.decode('utf-8'), height=100)
+st.text_area("Clave pública (distribuir):", st.session_state.public_key.decode('utf-8'), height=100)
+
+st.markdown("### 2. Creación del hash")
+message = st.text_area("Mensaje a firmar:", "Este es un mensaje secreto.")
+hash_obj = create_hash(message)
+st.text_input("Hash del mensaje:", hash_obj.hexdigest())
+
+st.markdown("### 3. Firma")
+if st.button("Firmar mensaje"):
+    signature = sign_message(st.session_state.private_key, hash_obj)
+    st.session_state.signature = signature
+    st.text_input("Firma digital:", signature)
+
+st.markdown("### 4. Verificación")
+signature_to_verify = st.text_input("Firma digital a verificar:", st.session_state.get('signature', ''))
+message_to_verify = st.text_area("Mensaje original para verificación:", message)
+
+if st.button("Verificar firma"):
+    is_valid = verify_signature(st.session_state.public_key, signature_to_verify, message_to_verify)
+    if is_valid:
+        st.success("La firma es válida. El mensaje es auténtico y no ha sido alterado.")
+    else:
+        st.error("La firma no es válida. El mensaje puede haber sido alterado o la firma es incorrecta.")
 
