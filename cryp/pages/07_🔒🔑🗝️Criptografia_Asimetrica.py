@@ -377,3 +377,75 @@ Existen distintas formas de demostrar este hecho, como por ejemplo usando técni
 Finalmente, es importante el siguiente teorema:
 """)
 
+############
+import streamlit as st
+
+st.title("Teorema de Euler-Fermat")
+
+st.markdown("""
+Sean \(a\) y \(n\) enteros positivos, primos relativos, entonces se tiene la congruencia:
+""")
+st.latex(r'''n^{\phi(a)} \equiv 1 \mod a''')
+
+st.markdown("""
+#### Demostración:
+Sea \(A\) el conjunto canónico de residuos módulo \(a\) (es decir, el conjunto de los primos relativos menores o iguales de \(a\)), entonces por definición \(A\) tiene \(\phi(a)\) elementos. Considere el conjunto:
+""")
+st.latex(r'''B = \{xn \mid x \in A\}''')
+
+st.markdown("""
+Como \(a\) y \(n\) son coprimos, \(B\) es un conjunto reducido de residuos módulo \(a\). Si \(u\) es el producto de todos los elementos de \(A\) y \(v\) el producto de todos los elementos de \(B\), entonces:
+""")
+st.latex(r'''u^{n\phi(a)} = v''')
+st.latex(r'''v \equiv u \mod a''')
+st.latex(r'''u^{n\phi(a)} \equiv u \mod a''')
+
+st.markdown("""
+Y como \(u\) es primo relativo con \(a\), pues es producto de primos relativos con \(a\), entonces tenemos:
+""")
+st.latex(r'''n^{\phi(a)} \equiv 1 \mod a \quad \square''')
+
+st.markdown("""
+Este teorema es una generalización del pequeño teorema de Fermat, pues este último se obtiene tomando \(a\) primo.
+
+### Aplicación al RSA
+
+Ahora veamos cómo se aplican estos resultados al RSA. Digamos que un banco quiere recibir una información confidencial de un cliente. El banco primero elije dos primos muy grandes \(P\) y \(Q\) y el primer número de la clave pública sería:
+""")
+st.latex(r'''N = P \cdot Q''')
+
+st.markdown("""
+Ahora que el banco conoce \(P\) y \(Q\) le es posible calcular fácilmente \(\phi(N)\), pues:
+""")
+st.latex(r''' \phi(N) = \phi(Q \cdot P) = \phi(Q) \cdot \phi(P) = (Q - 1)(P - 1) ''')
+
+st.markdown("""
+Luego, el banco escoge un \(e\) que tenga inverso multiplicativo \(d\) módulo \(\phi(N)\). En la práctica, escoger un \(e\) menor que \(\phi(N)\) con inverso multiplicativo es enteramente posible ya que los primos que tomó el banco son lo suficientemente grandes como para que:
+""")
+st.latex(r''' \phi(\phi(N)) \geq 1 ''')
+
+st.markdown("""
+Un método para calcular el inverso multiplicativo \(d\) de \(e\) es calcular:
+""")
+st.latex(r''' e^{\phi(\phi(N)) - 1} \mod \phi(N) ''')
+st.markdown("por el teorema de Euler-Fermat. Este número \(d\) es lo que correspondería a la “clave privada” del banco, el cual es casi imposible de descifrar porque para hacerlo sería necesario conocer los primos \(P\) y \(Q\) que factorizan a \(N\), para así calcular \(\phi(N)\) (tarea que para \(N\) muy grandes es casi imposible). Así, el banco finalmente publica el par de números \((N, e)\) que vendrían a ser lo que se denomina la “clave pública” del banco.")
+
+st.markdown("""
+Digamos ahora que el cliente recopila la información que le quiere enviar al banco y la codifica en un mensaje \(M\) (aquí el sistema de codificación debe ser tal que no admita mensajes iguales a \(P\), \(Q\) ni mayores que \(N\)). Luego, para enviar este mensaje de manera secreta debe encriptarlo con la “clave pública” del banco, a saber, el par \((N, e)\). Así, el mensaje encriptado del cliente sería:
+""")
+st.latex(r'''C = M^e \mod N''')
+
+st.markdown("y una vez hecha esta operación lo publica para que el banco pueda acceder a él. El banco es el único que conoce \(d\), su “clave privada”, y entonces puede usarla para descifrar el mensaje encriptado \(C\) del cliente. Para esto, calcula:")
+st.latex(r'''C^d \mod N''')
+
+st.markdown("""
+Esto funciona por el Teorema Euler-Fermat, pues \(M\) y \(N\) son primos relativos porque \(M\) es distinto a \(P\), \(Q\) y \(N\), y como \(e \cdot d \equiv 1 \mod \phi(N)\), existe un entero \(k\) tal que:
+""")
+st.latex(r'''e \cdot d = \phi(N)k + 1''')
+
+st.markdown("y por lo tanto se tiene:")
+st.latex(r'''C^d \equiv (M^e)^d \equiv M^{ed} \equiv M^{\phi(N)k+1} \equiv M(M^{\phi(N)})^k \equiv M \cdot 1^k \equiv M \mod N''')
+
+st.markdown("""
+El teorema Euler-Fermat se usa en el paso \(M(M^{\phi(N)})^k \equiv M \cdot 1^k\). De esta manera, el banco logra recobrar el mensaje completo del cliente. Aquí se evidencia la importancia de que \(M\) sea menor o igual a \(N\), pues de lo contrario cuando el banco calcula \(C^d \mod N\) obtendría \(M \mod N\), el cual es distinto al mensaje original del cliente \(M\) dado que \(M > N\).
+""")
