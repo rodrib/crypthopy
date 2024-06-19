@@ -9,6 +9,7 @@ st.title("Criptografía")
 # Ruta de la imagen en la misma carpeta que el archivo main.py
 image_path = "cryptography-agus.jpeg"  # Cambia "cryptography-agus.jpeg" por el nombre de tu imagen
 
+#fixed imagen
 # Cargar y mostrar la imagen
 try:
     image = Image.open(image_path)
