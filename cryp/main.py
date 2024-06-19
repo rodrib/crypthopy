@@ -1,14 +1,19 @@
 import streamlit as st
-
+from PIL import Image
 
 # Título de la aplicación
-st.title("Criptografia")
+st.title("Criptografía")
 
-# URL de la nueva imagen
-image_url = "https://elcorreoweb.es/binrepository/criptografia-1_20382928_20200310082329.jpg"
+# Ruta de la imagen en la misma carpeta que el archivo main.py
+image_path = "cryptography-agus.jpeg"  # Cambia "cryptography-agus.jpeg" por el nombre de tu imagen
 
-# Agregar la imagen debajo del título
-st.image(image_url, caption="Criptografia", use_column_width=True)
+# Cargar y mostrar la imagen
+try:
+    image = Image.open(image_path)
+    # Agregar la imagen debajo del título
+    st.image(image, caption="Criptografía", use_column_width=True)
+except FileNotFoundError:
+    st.error("La imagen no se pudo encontrar. Asegúrate de que el archivo de imagen está en la misma carpeta que el archivo main.py.")
 
 # Título y definición de la criptografía
 st.header("Introducción")
