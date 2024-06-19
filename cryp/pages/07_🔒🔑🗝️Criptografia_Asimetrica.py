@@ -489,7 +489,7 @@ Lo primero que hace entonces es seleccionar dos números primos P y Q muy grande
 """)
 
 # URL de la imagen de criptografía
-image_url = "https://www.fortinet.com/content/fortinet-com/zh_tw/resources/cyberglossary/what-is-cryptography/_jcr_content/par/c05_container_copy_c/par/c28_image_copy_copy.img.jpg/1701209624270.jpg"
+image_url = "https://miro.medium.com/v2/resize:fit:828/format:webp/1*iQ6VqwTlVn8v4FkgPsv-0g.png"
 
 # Cargar la imagen desde la URL
 response = requests.get(image_url)
