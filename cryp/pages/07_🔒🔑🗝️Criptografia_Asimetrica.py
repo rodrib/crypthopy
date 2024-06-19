@@ -469,3 +469,149 @@ if st.button("Verificar firma"):
     else:
         st.error("La firma no es válida. El mensaje puede haber sido alterado o la firma es incorrecta.")
 
+
+
+#########
+
+import streamlit as st
+import random
+from PIL import Image
+import requests
+from io import BytesIO
+
+# Título de la aplicación
+st.title("Práctica con RSA")
+
+# Contexto
+st.write("""
+Digamos que Andrés tiene algo muy importante que decirle a su amiga Sofía. Para que Andrés le pueda enviar el mensaje secreto, Sofía implementa un sistema de RSA.
+Lo primero que hace entonces es seleccionar dos números primos P y Q muy grandes.
+""")
+
+# URL de la imagen de criptografía
+image_url = "https://www.fortinet.com/content/fortinet-com/zh_tw/resources/cyberglossary/what-is-cryptography/_jcr_content/par/c05_container_copy_c/par/c28_image_copy_copy.img.jpg/1701209624270.jpg"
+
+# Cargar la imagen desde la URL
+response = requests.get(image_url)
+image = Image.open(BytesIO(response.content))
+
+# Agregar la imagen debajo del título
+st.image(image, caption="Criptografía", use_column_width=True)
+
+# Generación de los números primos P y Q
+st.subheader("Generación de los números primos P y Q")
+
+def isPrime(n):
+    k = 0
+    for i in range(2, n):
+        if n % i == 0:
+            k = i
+            break
+    return k == 0
+
+a = 1000
+b = 2000
+
+P = random.randint(a, b)
+while not isPrime(P):
+    P = random.randint(a, b)
+
+Q = random.randint(a, b)
+while not isPrime(Q):
+    Q = random.randint(a, b)
+
+st.write(f"P = {P}")
+st.write(f"Q = {Q}")
+
+# Selección del número e y cálculo de N, phi(N), d
+st.subheader("Selección del número e y cálculo de N, phi(N), d")
+
+alpha = 10
+beta = 50
+e = random.randint(alpha, beta)
+N = P * Q
+
+def gcd(v1, v2): 
+    if v2 == 0: 
+        return v1
+    else: 
+        return gcd(v2, v1 % v2) 
+
+def phi(n):
+    k = 0
+    for i in range(1, n + 1):
+        if gcd(n, i) == 1:
+            k = k + 1
+    return k
+
+phiN = (P - 1) * (Q - 1)
+exp = phi(phiN) - 1
+D = e ** exp
+d = D % phiN
+
+while not (e * d) % phiN == 1:
+    e = random.randint(alpha, beta)
+    D = e ** exp
+    d = D % phiN
+    
+st.write(f"La clave privada de Sofía es el número d = {d}")
+st.write(f"La clave pública que publica Sofía es el par (N, e) = ({N}, {e})")
+
+# Información adicional sobre la clave privada y pública de Sofía
+st.write("La clave privada de Sofía es el número d = 862709")
+st.write("La clave pública que publica Sofía es el par (N,e) = ( 1789813 , 29 )")
+
+# Contexto adicional sobre cómo Andrés codifica y encripta su mensaje
+st.write("""
+Con esta información, Andrés codifica el mensaje que le quiere enviar a Sofía. En este caso, el mensaje que le quiere enviar es “te amo”. Supongamos que Andrés y Sofía ya habían hablado previamente sobre su relación y que Sofía había decidido darle una oportunidad a Andrés para que le dijera lo que realmente sentía. Para esto, Sofía le dio entonces un tiempo a Andrés para que pensara y le dio la siguiente lista con códigos para cuando Andrés quisiera responderle: 1=si, 2=no, 3=te, 4=quiero, 5=amo, 6=ver. El mensaje de Andrés codificado con esta lista sería entonces M=35. Así, Andrés procede a encriptar su mensaje con ayuda de la clave pública de Sofía (N,e) efectuando la siguiente operación C = M^e (mod N) y publica su mensaje encriptado C. (El lector también puede escoger un mensaje diferente, codificarlo con la lista dada y pasárselo al siguiente método. Lo único que tiene que verificar es que su mensaje no sea mayor que N y que sea distinto a los dos primos P y Q)
+""")
+
+# Encriptación del mensaje de Andrés
+st.subheader("Encriptación del mensaje de Andrés")
+
+M = st.number_input("El mensaje de Andrés para Sofía es (luego de insertar el mensaje oprima ENTER): ", min_value=0, step=1)
+exp = M ** e
+C = exp % N
+st.write(f"Mensaje encriptado C = {C}")
+
+# Desencriptación del mensaje encriptado de Andrés
+st.subheader("Desencriptación del mensaje encriptado de Andrés")
+
+exp = C ** d
+m = exp % N
+st.write(f"Mensaje desencriptado MD = {m}")
+
+# Contexto final
+st.write("""
+De esta manera, Sofía se entera de que Andrés en efecto sí la ama y sabe que nadie más, además de ella y Andrés, lo sabe. Así, Sofía y Andrés pudieron comunicarse de manera segura y Andrés pudo decirle lo que realmente sentía a Sofía.
+""")
+
+# Encriptar y desencriptar archivos con RSA
+st.subheader("Encriptar y desencriptar archivos con RSA")
+
+# Cargar archivo para encriptar
+uploaded_file = st.file_uploader("Carga un archivo para encriptar", type=["txt"])
+
+if uploaded_file is not None:
+    # Leer el contenido del archivo
+    file_content = uploaded_file.read().decode('utf-8')
+    st.write("Contenido del archivo:")
+    st.write(file_content)
+    
+    # Encriptar el contenido del archivo
+    file_content_int = int.from_bytes(file_content.encode(), 'big')
+    encrypted_content_int = pow(file_content_int, e, N)
+    encrypted_content = encrypted_content_int.to_bytes((encrypted_content_int.bit_length() + 7) // 8, 'big')
+    
+    st.write("Contenido encriptado del archivo:")
+    st.write(encrypted_content)
+    
+    # Botón para descargar el archivo encriptado
+    st.download_button(label="Descargar archivo encriptado", data=encrypted_content, file_name="encrypted_file.txt")
+
+    # Desencriptar el contenido del archivo encriptado
+    decrypted_content_int = pow(encrypted_content_int, d, N)
+    decrypted_content = decrypted_content_int.to_bytes((decrypted_content_int.bit_length() + 7) // 8, 'big').decode('utf-8')
+    
+    st.write("Contenido desencriptado del archivo:")
+    st.write(decrypted_content)
