@@ -6,7 +6,7 @@ import requests
 st.title("Criptografía de Curva Elíptica (ECC)")
 
 # Imagen relacionada con criptografía
-image_url = "https://www.fortinet.com/content/fortinet-com/zh_tw/resources/cyberglossary/what-is-cryptography/_jcr_content/par/c05_container_copy_c/par/c28_image_copy_copy.img.jpg/1701209624270.jpg"
+image_url = "https://pbs.twimg.com/media/Fe-xmLbUUAARO3X?format=jpg&name=large"
 image = Image.open(requests.get(image_url, stream=True).raw)
 st.image(image, caption="Criptografía", use_column_width=True)
 
@@ -37,3 +37,8 @@ st.latex(r'''y^2 = x^3 + ax + b''')
 st.write("""
 Dependiendo de los valores de a y b, las curvas elípticas toman diferentes formas. En el caso de Bitcoin, se utiliza una curva elíptica ECDSA con la curva secp256k1.
 """)
+
+# Imagen relacionada con criptografía
+image_url1 = "https://wiki.bitcoinsv.io/images/thumb/0/08/Elliptic-Curve-E-0-7-Real-Number.png/450px-Elliptic-Curve-E-0-7-Real-Number.png"
+image1 = Image.open(requests.get(image_url1, stream=True).raw)
+st.image(image1, caption="Criptografía de Curva Elíptica", use_column_width=True)
