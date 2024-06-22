@@ -42,3 +42,11 @@ Dependiendo de los valores de a y b, las curvas elípticas toman diferentes form
 image_url1 = "https://wiki.bitcoinsv.io/images/thumb/0/08/Elliptic-Curve-E-0-7-Real-Number.png/450px-Elliptic-Curve-E-0-7-Real-Number.png"
 image1 = Image.open(requests.get(image_url1, stream=True).raw)
 st.image(image1, caption="Criptografía de Curva Elíptica", use_column_width=True)
+
+# Sección: ¿Qué es el algoritmo de firma ECDSA?
+st.header("¿Qué es el algoritmo de firma ECDSA?")
+st.write("""
+El algoritmo de firma ECDSA es una técnica de criptografía asimétrica que se basa en el uso de curvas elípticas sobre campos finitos. Funciona mediante la generación de un par de claves: una clave privada y una clave pública. La clave privada se utiliza para firmar digitalmente un mensaje, mientras que la clave pública se utiliza para verificar la autenticidad de la firma.
+
+Es importante destacar que el algoritmo de firma ECDSA se utiliza mucho en aplicaciones donde la seguridad y la autenticidad de los datos son prioritarias, como en transacciones financieras, sistemas de autenticación y protocolos de seguridad en internet. Su eficiencia y robustez lo convierten en una opción preferida en entornos donde se requiere una protección sólida contra fraudes y ataques cibernéticos. Además, su implementación en dispositivos de hardware, como tarjetas inteligentes y dispositivos móviles, ha ampliado su alcance.
+""")
