@@ -43,6 +43,32 @@ image_url1 = "https://wiki.bitcoinsv.io/images/thumb/0/08/Elliptic-Curve-E-0-7-R
 image1 = Image.open(requests.get(image_url1, stream=True).raw)
 st.image(image1, caption="Criptografía de Curva Elíptica", use_column_width=True)
 
+
+# Panel interactivo para modificar a y b
+import matplotlib.pyplot as plt
+import numpy as np
+
+st.header("Interactividad: Modificar los valores de a y b")
+
+a = st.slider("Valor de a", min_value=-10.0, max_value=10.0, value=0.0, step=0.1)
+b = st.slider("Valor de b", min_value=-10.0, max_value=10.0, value=0.0, step=0.1)
+
+# Crear la gráfica
+x = np.linspace(-10, 10, 400)
+y = np.sqrt(x**3 + a * x + b)
+
+plt.figure(figsize=(8, 6))
+plt.plot(x, y, label='y^2 = x^3 + ax + b')
+plt.plot(x, -y, label='y^2 = x^3 + ax + b (reflejado)')
+plt.axhline(0, color='black',linewidth=0.5)
+plt.axvline(0, color='black',linewidth=0.5)
+plt.grid(color = 'gray', linestyle = '--', linewidth = 0.5)
+plt.title(f'Curva Elíptica para a = {a}, b = {b}')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.legend()
+st.pyplot(plt)
+
 # Sección: ¿Qué es el algoritmo de firma ECDSA?
 st.header("¿Qué es el algoritmo de firma ECDSA?")
 st.write("""
@@ -50,3 +76,4 @@ El algoritmo de firma ECDSA es una técnica de criptografía asimétrica que se 
 
 Es importante destacar que el algoritmo de firma ECDSA se utiliza mucho en aplicaciones donde la seguridad y la autenticidad de los datos son prioritarias, como en transacciones financieras, sistemas de autenticación y protocolos de seguridad en internet. Su eficiencia y robustez lo convierten en una opción preferida en entornos donde se requiere una protección sólida contra fraudes y ataques cibernéticos. Además, su implementación en dispositivos de hardware, como tarjetas inteligentes y dispositivos móviles, ha ampliado su alcance.
 """)
+
