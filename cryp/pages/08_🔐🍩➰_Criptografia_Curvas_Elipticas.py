@@ -77,6 +77,7 @@ El algoritmo de firma ECDSA es una técnica de criptografía asimétrica que se 
 Es importante destacar que el algoritmo de firma ECDSA se utiliza mucho en aplicaciones donde la seguridad y la autenticidad de los datos son prioritarias, como en transacciones financieras, sistemas de autenticación y protocolos de seguridad en internet. Su eficiencia y robustez lo convierten en una opción preferida en entornos donde se requiere una protección sólida contra fraudes y ataques cibernéticos. Además, su implementación en dispositivos de hardware, como tarjetas inteligentes y dispositivos móviles, ha ampliado su alcance.
 """)
 
+#########
 import streamlit as st
 
 # Título de la aplicación
@@ -85,9 +86,7 @@ st.title("Curvas y Longitud de Clave en ECC")
 st.write("""
 Los algoritmos criptográficos de ECC pueden usar diferentes curvas elípticas subyacentes. Diferentes curvas proporcionan diferentes niveles de seguridad (fuerza criptográfica), rendimiento (velocidad) y longitud de clave, y también pueden involucrar diferentes algoritmos.
 
-Las curvas ECC, adoptadas en las bibliotecas criptográficas populares y en los estándares de seguridad, tienen un nombre (curvas nombradas, por ejemplo, secp256k1 o Curve25519), tamaño del campo (que define la longitud de la clave, por ejemplo, 256 bits), fuerza de seguridad (generalmente el tamaño del campo / 2 o menos), rendimiento (operaciones/seg) y muchos otros parámetros.
+Las curvas ECC, adoptadas en las bibliotecas criptográficas populares y en los estándares de seguridad, tienen un nombre (curvas nombradas, por ejemplo, [secp256k1](https://neuromancer.sk/std/secg/secp256k1) o [Curve25519](https://neuromancer.sk/std/secg/curve25519)), tamaño del campo (que define la longitud de la clave, por ejemplo, 256 bits), fuerza de seguridad (generalmente el tamaño del campo / 2 o menos), rendimiento (operaciones/seg) y muchos otros parámetros.
 
-Las claves ECC tienen una longitud que depende directamente de la curva subyacente. En la mayoría de las aplicaciones (como OpenSSL, OpenSSH y Bitcoin), la longitud de clave predeterminada para las claves privadas de ECC es de 256 bits, pero dependiendo de la curva, son posibles muchas longitudes de clave ECC diferentes: 192 bits (curva [secp192r1](https://neuromancer.sk/std/secg/secp192r1)), 233 bits (curva sect233k1), 224 bits (curva secp224k1), 256 bits (curvas secp256k1 y Curve25519), 283 bits (curva sect283k1), 384 bits (curvas p384 y secp384r1), 409 bits (curva sect409r1), 414 bits (curva Curve41417), 448 bits (curva Curve448-Goldilocks), 511 bits (curva M-511), 521 bits (curva P-521), 571 bits (curva sect571k1) y muchas otras.
+Las claves ECC tienen una longitud que depende directamente de la curva subyacente. En la mayoría de las aplicaciones (como OpenSSL, OpenSSH y Bitcoin), la longitud de clave predeterminada para las claves privadas de ECC es de 256 bits, pero dependiendo de la curva, son posibles muchas longitudes de clave ECC diferentes: 192 bits (curva [secp192r1](https://neuromancer.sk/std/secg/secp192r1)), 233 bits (curva [sect233k1](https://neuromancer.sk/std/secg/sect233k1)), 224 bits (curva [secp224k1](https://neuromancer.sk/std/secg/secp224k1)), 256 bits (curvas secp256k1 y Curve25519), 283 bits (curva [sect283k1](https://neuromancer.sk/std/secg/sect283k1)), 384 bits (curvas p384 y [secp384r1](https://neuromancer.sk/std/secg/secp384r1)), 409 bits (curva [sect409r1](https://neuromancer.sk/std/secg/sect409r1)), 414 bits (curva [Curve41417](https://neuromancer.sk/std/secg/curve41417)), 448 bits (curva [Curve448-Goldilocks](https://neuromancer.sk/std/secg/curve448-goldilocks)), 511 bits (curva M-511), 521 bits (curva P-521), 571 bits (curva [sect571k1](https://neuromancer.sk/std/secg/sect571k1)) y muchas otras.
 """)
-
-
