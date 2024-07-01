@@ -90,3 +90,6 @@ Las curvas ECC, adoptadas en las bibliotecas criptográficas populares y en los 
 
 Las claves ECC tienen una longitud que depende directamente de la curva subyacente. En la mayoría de las aplicaciones (como OpenSSL, OpenSSH y Bitcoin), la longitud de clave predeterminada para las claves privadas de ECC es de 256 bits, pero dependiendo de la curva, son posibles muchas longitudes de clave ECC diferentes: 192 bits (curva [secp192r1](https://neuromancer.sk/std/secg/secp192r1)), 233 bits (curva [sect233k1](https://neuromancer.sk/std/secg/sect233k1)), 224 bits (curva [secp224k1](https://neuromancer.sk/std/secg/secp224k1)), 256 bits (curvas secp256k1 y Curve25519), 283 bits (curva [sect283k1](https://neuromancer.sk/std/secg/sect283k1)), 384 bits (curvas p384 y [secp384r1](https://neuromancer.sk/std/secg/secp384r1)), 409 bits (curva [sect409r1](https://neuromancer.sk/std/secg/sect409r1)), 414 bits (curva [Curve41417](https://neuromancer.sk/std/secg/curve41417)), 448 bits (curva [Curve448-Goldilocks](https://neuromancer.sk/std/secg/curve448-goldilocks)), 511 bits (curva M-511), 521 bits (curva P-521), 571 bits (curva [sect571k1](https://neuromancer.sk/std/secg/sect571k1)) y muchas otras.
 """)
+
+
+
