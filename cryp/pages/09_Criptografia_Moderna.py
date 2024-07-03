@@ -127,3 +127,41 @@ image1 = Image.open(BytesIO(response.content))
 
 # Agregar la imagen debajo del título
 st.image(image1, caption="Qubit", use_column_width=True)
+
+# Texto estructurado como items
+texto = """
+- Un qubit solo puede tomar valores entre 0 y 1.
+- Recopilar más información o colocar más qubits juntos puede desestabilizarlos fácilmente, requiriendo condiciones muy específicas como el aislamiento ambiental y bajas temperaturas.
+- Se puede utilizar para paralelizar problemas como el cálculo del logaritmo discreto y la factorización de números primos grandes.
+- Teóricamente, estas técnicas podrían romper el criptosistema RSA.
+- Estudios recientes indican que se necesitan alrededor de un millón de qubits para factorizar números primos grandes.
+- A este nivel, los qubits se vuelven tan inestables que es difícil mantener su coherencia en conjunto.
+"""
+
+# Mostrar en Streamlit
+st.title("Problemas y aplicaciones de los qubits")
+st.markdown(texto)
+
+
+import streamlit as st
+from PIL import Image
+import requests
+from io import BytesIO
+
+# URL de la imagen del circuito cuántico
+image_url2 = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Quantum_teleportation_circuit.svg/1920px-Quantum_teleportation_circuit.svg.png"
+
+
+# Cargar la imagen desde la URL
+response = requests.get(image_url2)
+image2 = Image.open(BytesIO(response.content))
+
+# Texto para mostrar debajo de la imagen
+caption_text = """
+Circuito que realiza la teletransportación de un qubit.
+Este circuito consta tanto de puertas cuánticas como de medidas.
+La medición es un fenómeno cuántico que no ocurre en los circuitos clásicos.
+"""
+
+# Agregar la imagen debajo del título
+st.image(image2, caption=caption_text, use_column_width=True)
