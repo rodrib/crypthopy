@@ -143,28 +143,28 @@ st.title("Problemas y aplicaciones de los qubits")
 st.markdown(texto)
 
 
-import streamlit as st
-from PIL import Image
-import requests
-from io import BytesIO
+# """ import streamlit as st
+# from PIL import Image
+# import requests
+# from io import BytesIO
 
-# URL de la imagen del circuito cuántico
-image_url2 = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Quantum_teleportation_circuit.svg/1920px-Quantum_teleportation_circuit.svg.png"
+# # URL de la imagen del circuito cuántico
+# image_url2 = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Quantum_teleportation_circuit.svg/1920px-Quantum_teleportation_circuit.svg.png"
 
 
-# Cargar la imagen desde la URL
-response = requests.get(image_url2)
-image2 = Image.open(BytesIO(response.content))
+# # Cargar la imagen desde la URL
+# response = requests.get(image_url2)
+# image2 = Image.open(BytesIO(response.content)) """
 
-# Texto para mostrar debajo de la imagen
-caption_text = """
-Circuito que realiza la teletransportación de un qubit.
-Este circuito consta tanto de puertas cuánticas como de medidas.
-La medición es un fenómeno cuántico que no ocurre en los circuitos clásicos.
-"""
+# # Texto para mostrar debajo de la imagen
+# caption_text = """
+# Circuito que realiza la teletransportación de un qubit.
+# Este circuito consta tanto de puertas cuánticas como de medidas.
+# La medición es un fenómeno cuántico que no ocurre en los circuitos clásicos.
+# """
 
-# Agregar la imagen debajo del título
-st.image(image2, caption=caption_text, use_column_width=True)
+# # Agregar la imagen debajo del título
+# st.image(image2, caption=caption_text, use_column_width=True)
 
 
 st.title("Investigación en Criptografía")
@@ -205,3 +205,27 @@ En el momento de su publicación, este criptosistema fue el primero en demostrar
 
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/b62c499ec81e5053ef904e5c497283a2b0f056d9.pdf)")
+
+
+# Cargar imagen desde un archivo local
+imagen_local2 = "math-paper2.png"
+imagen = st.image(imagen_local2, caption="On the (Im)possibility of Obfuscating Programs", use_column_width=True)
+
+# Título
+st.header("Sobre la (im)posibilidad de ofuscar programas")
+
+# Resumen
+st.write("""
+**Criptografía No Maleable**  
+Danny Dolev, Cynthia Dwork y Moni Naor — Publicado en enero de 1991
+
+"Maleable" significa capaz de transformarse en otra forma sin romperse ni agrietarse.
+
+La no-maleabilidad, según se define en la Seguridad Semántica (Goldwasser y Micali, 1982), dice que al ver una encriptación de un mensaje, no nos ayuda a encontrar los detalles del mensaje en texto plano. El adversario no aprende nada sobre el mensaje original solo viendo la encriptación y no puede producir ningún texto plano relacionado con el mensaje.
+
+El concepto de criptografía no maleable, una extensión de la criptografía semánticamente segura, va un paso más allá: dado el texto cifrado de un mensaje, es imposible generar un texto cifrado diferente de modo que los respectivos textos planos estén relacionados.
+
+El mismo concepto tiene sentido en los contextos de compromiso de cadenas y pruebas de conocimiento cero. Se presentan esquemas no maleables para cada uno de estos tres problemas. Los esquemas no suponen un centro de confianza; un usuario no necesita saber nada sobre el número o la identidad de otros usuarios del sistema.
+
+En el momento de su publicación, este criptosistema fue el primero en demostrarse seguro contra un tipo fuerte de ataque de texto cifrado elegido propuesto por Rackoff y Simon, en el que el atacante conoce el texto cifrado que desea romper y puede consultar el oráculo de descifrado sobre cualquier texto cifrado que no sea el objetivo.
+""")
