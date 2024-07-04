@@ -216,16 +216,11 @@ st.header("Sobre la (im)posibilidad de ofuscar programas")
 
 # Resumen
 st.write("""
-**Criptografía No Maleable**  
-Danny Dolev, Cynthia Dwork y Moni Naor — Publicado en enero de 1991
-
-"Maleable" significa capaz de transformarse en otra forma sin romperse ni agrietarse.
-
-La no-maleabilidad, según se define en la Seguridad Semántica (Goldwasser y Micali, 1982), dice que al ver una encriptación de un mensaje, no nos ayuda a encontrar los detalles del mensaje en texto plano. El adversario no aprende nada sobre el mensaje original solo viendo la encriptación y no puede producir ningún texto plano relacionado con el mensaje.
-
-El concepto de criptografía no maleable, una extensión de la criptografía semánticamente segura, va un paso más allá: dado el texto cifrado de un mensaje, es imposible generar un texto cifrado diferente de modo que los respectivos textos planos estén relacionados.
-
-El mismo concepto tiene sentido en los contextos de compromiso de cadenas y pruebas de conocimiento cero. Se presentan esquemas no maleables para cada uno de estos tres problemas. Los esquemas no suponen un centro de confianza; un usuario no necesita saber nada sobre el número o la identidad de otros usuarios del sistema.
-
-En el momento de su publicación, este criptosistema fue el primero en demostrarse seguro contra un tipo fuerte de ataque de texto cifrado elegido propuesto por Rackoff y Simon, en el que el atacante conoce el texto cifrado que desea romper y puede consultar el oráculo de descifrado sobre cualquier texto cifrado que no sea el objetivo.
+**Sobre la (im)posibilidad de ofuscar programas**  
+Los artículos sobre la ofuscación de programas abordan cómo hacer que un programa sea ininteligible pero funcionalmente preservado.
+Esto permite que una parte entregue un programa ejecutable a otra parte sin revelar su funcionamiento interno.
+La investigación comenzó en 2001 con la demostración de la imposibilidad de la ofuscación de caja negra virtual y la introducción de la ofuscación de indistinguibilidad (IO) más débil. Artículos posteriores incluyen propuestas de esquemas de IO candidatos y aplicaciones de programas perforados, resolviendo problemas como el cifrado negable y construyendo IO basado en suposiciones criptográficas.
 """)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/539a6d18a0e90fe6d9d27769b7d42469298fc329.pdf)")
