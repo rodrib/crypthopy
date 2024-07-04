@@ -165,3 +165,12 @@ La medición es un fenómeno cuántico que no ocurre en los circuitos clásicos.
 
 # Agregar la imagen debajo del título
 st.image(image2, caption=caption_text, use_column_width=True)
+
+
+st.title("Investigación en Criptografía")
+
+# Descripción
+st.write("""
+Los artículos sobre criptografía más importantes que abarcan el pasado, el presente y el futuro de los criptosistemas y la criptología.
+""")
+
