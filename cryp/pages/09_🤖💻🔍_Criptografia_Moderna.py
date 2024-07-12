@@ -224,3 +224,12 @@ La investigación comenzó en 2001 con la demostración de la imposibilidad de l
 
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/539a6d18a0e90fe6d9d27769b7d42469298fc329.pdf)")
+
+
+##########
+# Cargar imagen desde un archivo local
+imagen_local3 = "math-paper3.png"
+imagen = st.image(imagen_local2, caption="Computer Systems Established, Maintained and Trusted by Mutually Suspicious Groups", use_column_width=True)
+
+#Titulo
+st.header("Sistemas informáticos establecidos, mantenidos y en los que confían grupos mutuamente sospechosos")
