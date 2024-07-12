@@ -233,3 +233,23 @@ imagen = st.image(imagen_local2, caption="Computer Systems Established, Maintain
 
 #Titulo
 st.header("Sistemas informáticos establecidos, mantenidos y en los que confían grupos mutuamente sospechosos")
+
+
+# Resumen del artículo
+resumen3 = """
+Este artículo es la primera propuesta conocida de un protocolo de blockchain.
+
+Chaum describe el diseño de un sistema informático distribuido que puede ser establecido, mantenido y confiable por grupos mutuamente desconfiados.
+
+Es un sistema de registro público con consistencia de membresía grupal y cálculos de transacciones privadas que protege la privacidad individual a través de la seguridad física.
+
+Los componentes del sistema incluyen "bóvedas" físicamente seguras, primitivas criptográficas existentes (cifrado simétrico y asimétrico, funciones hash criptográficas, firmas digitales) y una nueva primitiva introducida por Chaum: el reparto secreto umbral, donde un umbral de claves subparciales es suficiente para reconstruir la clave original.
+
+Para más sobre la historia de las tecnologías blockchain, considere "On the Origins and Variations of Blockchain Technologies".
+"""
+
+# Mostrar el resumen en Streamlit
+st.write(resumen3)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/e630610a9c7c3c8f950cfb5632b44ecf1b8926d2.pdf)")
