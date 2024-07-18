@@ -253,3 +253,11 @@ st.write(resumen3)
 
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/e630610a9c7c3c8f950cfb5632b44ecf1b8926d2.pdf)")
+
+
+# Cargar imagen desde un archivo local
+imagen_local4 = "math-paper4.png"
+imagen = st.image(imagen_local4, caption="A Digital Signature Based on a Conventional Encryption Function", use_column_width=True)
+
+#Titulo
+st.header("Una firma digital basada en una función de cifrado convencional")
