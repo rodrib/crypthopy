@@ -261,3 +261,16 @@ imagen = st.image(imagen_local4, caption="A Digital Signature Based on a Convent
 
 #Titulo
 st.header("Una firma digital basada en una función de cifrado convencional")
+
+resumen4 = """
+En este artículo, Ralph C. Merkle desarrolló el concepto de los árboles de Merkle, que permiten almacenar datos eficientemente, ahorrando memoria y potencia de procesamiento.
+
+Los árboles de Merkle utilizan funciones hash, que calculan un valor único y fijo (hash) a partir de datos. Un pequeño cambio en la entrada cambia completamente el hash; los hashes son únicos y unidireccionales. Los árboles de Merkle organizan y verifican datos mediante la creación de un árbol de hashes, donde cada nodo padre se forma a partir de los hashes de sus nodos hijos.
+
+Los cambios en cualquier punto del árbol afectan los hashes siguientes, incluyendo el hash raíz. Las pruebas de Merkle verifican la integridad de los hashes en todas las ramas del árbol. Estos árboles son esenciales en criptomonedas como Bitcoin y Ethereum.
+"""
+
+
+# Mostrar el resumen en Streamlit
+st.write(resumen4)
+
