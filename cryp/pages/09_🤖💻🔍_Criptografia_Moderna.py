@@ -274,3 +274,5 @@ Los cambios en cualquier punto del árbol afectan los hashes siguientes, incluye
 # Mostrar el resumen en Streamlit
 st.write(resumen4)
 
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/5bcd990b11e068234c3a13b021f3266bb45a2964.pdf)")
