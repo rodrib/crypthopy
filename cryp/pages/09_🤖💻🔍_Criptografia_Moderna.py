@@ -178,8 +178,8 @@ import streamlit as st
 from PIL import Image
 
 # Cargar imagen desde un archivo local
-imagen_local = "math-paper1.png"
-imagen = st.image(imagen_local, caption="Non-Malleable Cryptography", use_column_width=True)
+#imagen_local = "math-paper1.png"
+#imagen = st.image(imagen_local, caption="Non-Malleable Cryptography", use_column_width=True)
 
 
 import streamlit as st
@@ -208,8 +208,8 @@ st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/b6
 
 
 # Cargar imagen desde un archivo local
-imagen_local2 = "math-paper2.png"
-imagen = st.image(imagen_local2, caption="On the (Im)possibility of Obfuscating Programs", use_column_width=True)
+#imagen_local2 = "math-paper2.png"
+#imagen = st.image(imagen_local2, caption="On the (Im)possibility of Obfuscating Programs", use_column_width=True)
 
 # Título
 st.header("Sobre la (im)posibilidad de ofuscar programas")
@@ -228,8 +228,8 @@ st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/53
 
 ##########
 # Cargar imagen desde un archivo local
-imagen_local3 = "math-paper3.png"
-imagen = st.image(imagen_local2, caption="Computer Systems Established, Maintained and Trusted by Mutually Suspicious Groups", use_column_width=True)
+#imagen_local3 = "math-paper3.png"
+#imagen = st.image(imagen_local2, caption="Computer Systems Established, Maintained and Trusted by Mutually Suspicious Groups", use_column_width=True)
 
 #Titulo
 st.header("Sistemas informáticos establecidos, mantenidos y en los que confían grupos mutuamente sospechosos")
@@ -256,8 +256,8 @@ st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/e6
 
 
 # Cargar imagen desde un archivo local
-imagen_local4 = "math-paper4.png"
-imagen = st.image(imagen_local4, caption="A Digital Signature Based on a Conventional Encryption Function", use_column_width=True)
+#imagen_local4 = "math-paper4.png"
+#imagen = st.image(imagen_local4, caption="A Digital Signature Based on a Conventional Encryption Function", use_column_width=True)
 
 #Titulo
 st.header("Una firma digital basada en una función de cifrado convencional")
