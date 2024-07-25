@@ -288,3 +288,6 @@ En este artículo, Shafi Goldwasser, Silvio Micali y Charles Rackoff introdujero
 
 # Mostrar el resumen en Streamlit
 st.write(resumen5)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/0216c6a57ccda410243a2e4b165e141439d2c5ea.pdf)")
