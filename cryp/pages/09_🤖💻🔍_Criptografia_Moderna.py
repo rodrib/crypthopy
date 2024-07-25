@@ -291,3 +291,18 @@ st.write(resumen5)
 
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/0216c6a57ccda410243a2e4b165e141439d2c5ea.pdf)")
+
+
+#Titulo
+st.header("Longitudes de clave mínimas para cifrados simétricos para proporcionar una seguridad comercial adecuada")
+
+import streamlit as st
+
+resumen6 = """
+La criptografía se basa en la gestión eficaz de las claves de cifrado. Un estudio histórico de criptógrafos e informáticos destaca que las claves más largas ofrecen mayor resistencia a ataques, sin aumentar significativamente el costo del cifrado. Se recomienda que los datos cifrados permanezcan seguros por al menos 20 años. Los tamaños de las claves se miden en bits, y su seguridad crece exponencialmente con cada bit adicional. Aumentar la longitud de la clave en un bit duplica las posibles combinaciones, mientras que diez bits las multiplican por más de mil. Esta relación entre longitud de clave y seguridad es fundamental para entender y aplicar la criptografía moderna de manera efectiva.
+"""
+
+st.write(resumen6)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/a1f8074ba7d8eca67be24ae22d0d0b2a3544e759.pdf)")
