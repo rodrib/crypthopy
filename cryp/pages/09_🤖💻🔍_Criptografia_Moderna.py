@@ -276,3 +276,15 @@ st.write(resumen4)
 
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/5bcd990b11e068234c3a13b021f3266bb45a2964.pdf)")
+
+
+#Titulo
+st.header("La complejidad del conocimiento de los sistemas de prueba interactivos")
+
+# Resumen del artículo sobre Zero-Knowledge Proofs
+resumen5 = """
+En este artículo, Shafi Goldwasser, Silvio Micali y Charles Rackoff introdujeron las pruebas de conocimiento cero (ZKP), una técnica criptográfica que permite a un probador demostrar a un verificador que un cálculo es correcto sin revelar más información que la veracidad de la declaración. Los ZKP permiten verificar la integridad de los datos sin exponer detalles subyacentes. En 2012, Goldwasser y Micali recibieron el Premio Turing por su trabajo en la teoría de la complejidad en criptografía. Una versión preliminar del artículo se publicó en 1986 y la versión revisada en 1989.
+"""
+
+# Mostrar el resumen en Streamlit
+st.write(resumen5)
