@@ -368,7 +368,7 @@ st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/54
 #Titulo
 st.header("Sobre los bancos de datos y los homomorfismos de la privacidad")
 
-import streamlit as st
+
 
 resumen11 = """
 Rivest, Adleman y Dertouzos plantearon en "On Data Banks and Privacy Homomorphisms" dos desafíos cruciales: realizar operaciones seguras en datos cifrados y construir un esquema de cifrado totalmente homomórfico (FHE). El sistema RSA es un ejemplo de cifrado parcialmente homomórfico, donde la multiplicación del texto cifrado se refleja en el texto plano. Un FHE permite tanto suma como multiplicación en datos cifrados sin descifrarlos ni usar clave secreta. Esto posibilita procesar datos cifrados manteniéndolos seguros. Aunque propuesto en los 70, el primer esquema FHE plausible fue presentado por Craig Gentry en 2009, marcando un hito en criptografía y privacidad de datos.
@@ -378,4 +378,19 @@ st.write(resumen11)
 
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/c365f01d330b2211e74069120e88cff37eacbcf5.pdf)")
+
+#Titulo
+st.header("Un algoritmo rápido de mecánica cuántica para la búsqueda de bases de datos")
+
+
+
+resumen12 = """
+El "Algoritmo cuántico rápido para búsqueda en bases de datos" de Grover representa una amenaza para la criptografía simétrica estándar, como AES. Este algoritmo puede encontrar la entrada de una función de caja negra dada su salida en tiempo O(√n), siendo asintóticamente óptimo. Su impacto en criptosistemas simétricos es significativo: reduce la seguridad de AES-256 al nivel de AES-128. Para contrarrestar ataques basados en el algoritmo de Grover, se recomienda duplicar el tamaño de bit del esquema criptográfico. Por ejemplo, usar AES-256 en lugar de AES-128, ya que Grover puede romper un esquema de 256 bits en 2^128 iteraciones en lugar de 2^256, manteniendo así un nivel de seguridad adecuado.
+"""
+
+
+st.write(resumen12)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/ad75b43834fc0da81bccc4072ab2c58ce37516f4.pdf)")
 
