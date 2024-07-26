@@ -306,3 +306,13 @@ st.write(resumen6)
 
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/a1f8074ba7d8eca67be24ae22d0d0b2a3544e759.pdf)")
+
+
+#Titulo
+st.header("CryptDB: protección de la confidencialidad con procesamiento de consultas cifradas")
+
+resumen7 = """
+CryptDB, desarrollado por Popa, Redfield, Zeldovich y Balakrishnan en 2011, es un sistema pionero que permite procesar consultas SQL sobre datos cifrados sin acceso a las claves de descifrado. Este enfoque representa un punto intermedio entre bases de datos convencionales y el cifrado totalmente homomórfico. CryptDB responde a la creciente necesidad de que las aplicaciones se protejan a sí mismas, especialmente en interacciones con bases de datos, ya sea en la nube o localmente. El sistema utiliza esquemas de cifrado compatibles con SQL para ejecutar consultas sobre datos cifrados, ofreciendo confidencialidad práctica y demostrable. Su eficacia se basa en que la mayoría de las consultas SQL usan un conjunto limitado de operadores, que CryptDB puede manejar eficientemente en datos cifrados.
+"""
+
+st.write(resumen7)
