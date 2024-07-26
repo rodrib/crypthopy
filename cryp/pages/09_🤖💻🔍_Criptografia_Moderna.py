@@ -363,3 +363,19 @@ st.write(resumen10)
 
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/5496636b7474ef68f79248de4a63dd879db55334.pdf)")
+
+
+#Titulo
+st.header("Sobre los bancos de datos y los homomorfismos de la privacidad")
+
+import streamlit as st
+
+resumen11 = """
+Rivest, Adleman y Dertouzos plantearon en "On Data Banks and Privacy Homomorphisms" dos desafíos cruciales: realizar operaciones seguras en datos cifrados y construir un esquema de cifrado totalmente homomórfico (FHE). El sistema RSA es un ejemplo de cifrado parcialmente homomórfico, donde la multiplicación del texto cifrado se refleja en el texto plano. Un FHE permite tanto suma como multiplicación en datos cifrados sin descifrarlos ni usar clave secreta. Esto posibilita procesar datos cifrados manteniéndolos seguros. Aunque propuesto en los 70, el primer esquema FHE plausible fue presentado por Craig Gentry en 2009, marcando un hito en criptografía y privacidad de datos.
+"""
+
+st.write(resumen11)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/c365f01d330b2211e74069120e88cff37eacbcf5.pdf)")
+
