@@ -333,3 +333,18 @@ st.write(resumen8)
 
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/0e0427aedfed65c8dd688c094b181feacf4eaab4.pdf)")
+
+
+#Titulo
+st.header("Bitcoin: un sistema de efectivo electrónico entre pares")
+
+import streamlit as st
+
+resumen9 = """
+Satoshi Nakamoto introdujo Bitcoin en 2008 como un sistema de dinero electrónico peer-to-peer que elimina la necesidad de intermediarios en las transacciones. Basado en criptografía de clave pública, Bitcoin resolvió por primera vez el problema de los generales bizantinos, estableciendo confianza en redes no confiables. Utiliza una cadena de firmas digitales para crear monedas y una prueba de trabajo basada en hash para prevenir el doble gasto sin terceros de confianza. Este innovador enfoque ha inspirado el desarrollo de otras criptomonedas y redes como Ethereum. Bitcoin representa un hito en la tecnología financiera, combinando conceptos de criptografía, descentralización y consenso distribuido para crear un sistema monetario revolucionario y resistente a la censura.
+"""
+
+st.write(resumen9)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/8de2fdb04edce612738eb51e14ecc426381f8ed8.pdf)")
