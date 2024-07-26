@@ -348,3 +348,18 @@ st.write(resumen9)
 
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/8de2fdb04edce612738eb51e14ecc426381f8ed8.pdf)")
+
+
+#Titulo
+st.header("Un esquema de cifrado completamente homomórfico")
+
+import streamlit as st
+
+resumen10 = """
+En "A fully homomorphic encryption scheme", Craig Gentry presenta la primera construcción plausible de un esquema de cifrado totalmente homomórfico (FHE), respondiendo al problema planteado en 1978 por Rivest, Adleman y Dertouzos. El FHE permite realizar cálculos arbitrarios en datos cifrados sin necesidad de descifrarlos o tener una clave secreta, siendo homomorfo tanto para la suma como para la multiplicación. Aunque aún no es práctico para una implementación generalizada, el avance de Gentry tiene implicaciones significativas para la seguridad de la computación en la nube y la privacidad de datos. Gentry advierte sobre los riesgos de almacenar datos sin cifrar en la nube, destacando la importancia del FHE para prevenir un futuro "orwelliano" de vigilancia.
+"""
+
+st.write(resumen10)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/5496636b7474ef68f79248de4a63dd879db55334.pdf)")
