@@ -316,3 +316,20 @@ CryptDB, desarrollado por Popa, Redfield, Zeldovich y Balakrishnan en 2011, es u
 """
 
 st.write(resumen7)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/22a5eeb8608b35e371b7544a54fabeadca8866e3.pdf)")
+
+#Titulo
+st.header("Protocolos para cálculos seguros")
+
+import streamlit as st
+
+resumen8 = """
+Andrew C. Yao, en su publicación de 1982 "Protocolos para cálculos seguros", introdujo el concepto revolucionario de computación multipartita segura (MPC). Este innovador enfoque permite que múltiples entidades independientes realicen operaciones conjuntas sobre sus datos privados agregados, obteniendo resultados sin revelar la información individual de cada parte. La MPC representa un avance significativo en la protección de la privacidad en cálculos colaborativos, equilibrando la necesidad de compartir resultados con la confidencialidad de los datos de entrada. Esta tecnología tiene aplicaciones potenciales en diversos campos como finanzas, investigación médica y análisis de datos, donde la privacidad y la colaboración son igualmente cruciales. Para profundizar en el tema, se recomienda consultar la "Introducción pragmática a la computación multipartita segura".
+"""
+
+st.write(resumen8)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/0e0427aedfed65c8dd688c094b181feacf4eaab4.pdf)")
