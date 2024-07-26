@@ -394,3 +394,17 @@ st.write(resumen12)
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/ad75b43834fc0da81bccc4072ab2c58ce37516f4.pdf)")
 
+#Titulo
+st.header("Algoritmos de tiempo polinomial para factorización prima y logaritmos discretos en una computadora cuántica")
+
+
+
+resumen13 = """
+Peter Shor, en 1994, demostró que los problemas de factorización de enteros y logaritmos discretos, base de criptosistemas como RSA y de curva elíptica, pueden resolverse en tiempo polinomial en un ordenador cuántico. Este avance amenaza la seguridad de los criptosistemas de clave pública actuales, incluyendo los usados en HTTPS. Shor advierte que la computación cuántica podría convertirse en una técnica especializada para vulnerar estos sistemas. Como respuesta, el NIST está estandarizando algoritmos de criptografía resistentes a la computación cuántica. Evervault planea acelerar la implementación de esta nueva criptografía para proteger los datos en la web, anticipándose a la era de los ordenadores cuánticos prácticos.
+"""
+
+
+st.write(resumen13)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/703d0b290a4ece50c17854ed72ecc808ce3e6f43.pdf)")
