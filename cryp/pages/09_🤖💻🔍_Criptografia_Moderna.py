@@ -28,7 +28,7 @@ PKCS es un conjunto de estándares para criptografía asimétrica, principalment
 st.markdown("- [TLS en Wikipedia](https://es.wikipedia.org/wiki/Transport_Layer_Security)")
 st.markdown("- [PKCS en Wikipedia](https://es.wikipedia.org/wiki/Public_Key_Cryptography_Standards)")
 
-import streamlit as st
+
 
 # Título de la sección
 st.title("Sistemas de Pruebas Interactivos (SPI)")
@@ -75,7 +75,6 @@ En resumen, los sistemas de pruebas interactivos son herramientas esenciales en 
 # Links de referencia
 st.markdown("- [Más información sobre los SPI](https://es.wikipedia.org/wiki/Sistema_de_prueba_interactiva)")
 
-import streamlit as st
 
 # Título de la sección
 st.title("Computación Cuántica")
@@ -106,7 +105,7 @@ st.markdown("- [Más información sobre Computación Cuántica](https://es.wikip
 import requests
 from PIL import Image
 from io import BytesIO
-import streamlit as st
+
 
 # URL de la imagen del experimento de doble rendija
 image_url = "https://www.dciencia.es/wp-content/uploads/Doble-rendija1.jpg"
@@ -182,7 +181,6 @@ from PIL import Image
 #imagen = st.image(imagen_local, caption="Non-Malleable Cryptography", use_column_width=True)
 
 
-import streamlit as st
 
 # Título
 st.header("Criptografía No Maleable")
@@ -296,7 +294,6 @@ st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/02
 #Titulo
 st.header("Longitudes de clave mínimas para cifrados simétricos para proporcionar una seguridad comercial adecuada")
 
-import streamlit as st
 
 resumen6 = """
 La criptografía se basa en la gestión eficaz de las claves de cifrado. Un estudio histórico de criptógrafos e informáticos destaca que las claves más largas ofrecen mayor resistencia a ataques, sin aumentar significativamente el costo del cifrado. Se recomienda que los datos cifrados permanezcan seguros por al menos 20 años. Los tamaños de las claves se miden en bits, y su seguridad crece exponencialmente con cada bit adicional. Aumentar la longitud de la clave en un bit duplica las posibles combinaciones, mientras que diez bits las multiplican por más de mil. Esta relación entre longitud de clave y seguridad es fundamental para entender y aplicar la criptografía moderna de manera efectiva.
@@ -323,7 +320,7 @@ st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/22
 #Titulo
 st.header("Protocolos para cálculos seguros")
 
-import streamlit as st
+
 
 resumen8 = """
 Andrew C. Yao, en su publicación de 1982 "Protocolos para cálculos seguros", introdujo el concepto revolucionario de computación multipartita segura (MPC). Este innovador enfoque permite que múltiples entidades independientes realicen operaciones conjuntas sobre sus datos privados agregados, obteniendo resultados sin revelar la información individual de cada parte. La MPC representa un avance significativo en la protección de la privacidad en cálculos colaborativos, equilibrando la necesidad de compartir resultados con la confidencialidad de los datos de entrada. Esta tecnología tiene aplicaciones potenciales en diversos campos como finanzas, investigación médica y análisis de datos, donde la privacidad y la colaboración son igualmente cruciales. Para profundizar en el tema, se recomienda consultar la "Introducción pragmática a la computación multipartita segura".
@@ -338,7 +335,7 @@ st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/0e
 #Titulo
 st.header("Bitcoin: un sistema de efectivo electrónico entre pares")
 
-import streamlit as st
+
 
 resumen9 = """
 Satoshi Nakamoto introdujo Bitcoin en 2008 como un sistema de dinero electrónico peer-to-peer que elimina la necesidad de intermediarios en las transacciones. Basado en criptografía de clave pública, Bitcoin resolvió por primera vez el problema de los generales bizantinos, estableciendo confianza en redes no confiables. Utiliza una cadena de firmas digitales para crear monedas y una prueba de trabajo basada en hash para prevenir el doble gasto sin terceros de confianza. Este innovador enfoque ha inspirado el desarrollo de otras criptomonedas y redes como Ethereum. Bitcoin representa un hito en la tecnología financiera, combinando conceptos de criptografía, descentralización y consenso distribuido para crear un sistema monetario revolucionario y resistente a la censura.
@@ -353,7 +350,7 @@ st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/8d
 #Titulo
 st.header("Un esquema de cifrado completamente homomórfico")
 
-import streamlit as st
+
 
 resumen10 = """
 En "A fully homomorphic encryption scheme", Craig Gentry presenta la primera construcción plausible de un esquema de cifrado totalmente homomórfico (FHE), respondiendo al problema planteado en 1978 por Rivest, Adleman y Dertouzos. El FHE permite realizar cálculos arbitrarios en datos cifrados sin necesidad de descifrarlos o tener una clave secreta, siendo homomorfo tanto para la suma como para la multiplicación. Aunque aún no es práctico para una implementación generalizada, el avance de Gentry tiene implicaciones significativas para la seguridad de la computación en la nube y la privacidad de datos. Gentry advierte sobre los riesgos de almacenar datos sin cifrar en la nube, destacando la importancia del FHE para prevenir un futuro "orwelliano" de vigilancia.
@@ -412,7 +409,7 @@ st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/70
 #Titulo
 st.header("Uso de curvas elípticas en criptografía")
 
-import streamlit as st
+
 
 resumen14 = """
 Este artículo, junto con "Elliptic Curve Cryptosystems", introdujo independientemente el uso de curvas elípticas en criptografía. A diferencia de RSA, basado en la factorización de números grandes, la criptografía de curva elíptica (ECC) se fundamenta en el problema del logaritmo discreto de curva elíptica. ECC ofrece seguridad comparable a RSA pero con claves más cortas y cálculos más eficientes. El desafío en ECC es encontrar un número entero n tal que Q = nP, dados dos puntos P y Q en una curva elíptica. Actualmente, ECC, especialmente el protocolo Elliptic Curve Diffie-Hellman (ECDH), es el método preferido para la autenticación en navegación web segura a través de SSL/TLS, demostrando su importancia en la criptografía moderna.
@@ -423,3 +420,30 @@ st.write(resumen14)
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/eadb771624c6bb59e2f1a1aede341e953c227032.pdf)")
 
+#Titulo
+st.header("Criptosistemas de curva elíptica")
+
+
+resumen15 = """
+Este artículo, junto con "Uso de curvas elípticas en criptografía", introdujo independientemente la criptografía de curva elíptica (ECC). A diferencia de RSA, que se basa en la factorización de grandes números primos, ECC utiliza el problema del logaritmo discreto de curva elíptica: encontrar n tal que Q = nP en una curva elíptica. ECC ofrece seguridad comparable a RSA con claves más cortas y cálculos más eficientes. Actualmente, ECC, especialmente el protocolo Elliptic Curve Diffie-Hellman (ECDH), es el método preferido para autenticación en navegación web segura mediante SSL/TLS. Esta innovación ha transformado significativamente la criptografía moderna, ofreciendo una alternativa más eficiente y segura a los métodos tradicionales de clave pública.
+"""
+
+st.write(resumen15)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/72c46c82327564ca337538202ffd311234a25cbf.pdf)")
+
+
+#Titulo
+st.header("Un método para obtener firmas digitales y criptosistemas de clave pública")
+
+
+
+resumen16 = """
+El artículo "New Directions in Cryptography" de Diffie y Hellman introdujo el concepto teórico de la criptografía de clave pública (PKC). Posteriormente, Rivest, Shamir y Adleman, en "A Method for Obtaining Digital Signatures and Public Key Cryptosystems", presentaron la primera implementación práctica de PKC, conocida como RSA. Este trabajo no solo materializó la teoría de Diffie y Hellman, sino que también introdujo a los personajes icónicos Alice y Bob en la literatura criptográfica. La importancia del sistema RSA fue tal que Diffie lo calificó como la contribución más espectacular al campo de la criptografía de clave pública, marcando un hito fundamental en la historia de la seguridad de la información.
+"""
+
+st.write(resumen16)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/733b3d4a7994bd9ecd6f01fd5aae9a6c0797f591.pdf)")
