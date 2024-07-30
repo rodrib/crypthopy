@@ -408,3 +408,18 @@ st.write(resumen13)
 
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/703d0b290a4ece50c17854ed72ecc808ce3e6f43.pdf)")
+
+#Titulo
+st.header("Uso de curvas elípticas en criptografía")
+
+import streamlit as st
+
+resumen14 = """
+Este artículo, junto con "Elliptic Curve Cryptosystems", introdujo independientemente el uso de curvas elípticas en criptografía. A diferencia de RSA, basado en la factorización de números grandes, la criptografía de curva elíptica (ECC) se fundamenta en el problema del logaritmo discreto de curva elíptica. ECC ofrece seguridad comparable a RSA pero con claves más cortas y cálculos más eficientes. El desafío en ECC es encontrar un número entero n tal que Q = nP, dados dos puntos P y Q en una curva elíptica. Actualmente, ECC, especialmente el protocolo Elliptic Curve Diffie-Hellman (ECDH), es el método preferido para la autenticación en navegación web segura a través de SSL/TLS, demostrando su importancia en la criptografía moderna.
+"""
+
+st.write(resumen14)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/eadb771624c6bb59e2f1a1aede341e953c227032.pdf)")
+
