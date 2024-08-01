@@ -447,3 +447,18 @@ st.write(resumen16)
 
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/733b3d4a7994bd9ecd6f01fd5aae9a6c0797f591.pdf)")
+
+
+#Titulo
+st.header("Nuevas direcciones en criptografía")
+
+
+
+resumen17 = """
+El artículo de Whitfield Diffie y Martin E. Hellman, publicado en noviembre de 1976, marcó un hito en la historia de la criptografía al introducir el revolucionario concepto de criptografía de clave pública, también conocida como criptografía asimétrica. Este innovador enfoque utiliza dos claves distintas: una para cifrar y otra para descifrar. La principal ventaja de este sistema es que permite a dos partes comunicarse de forma segura a través de un canal no seguro sin necesidad de compartir previamente una clave secreta. Esta idea transformó fundamentalmente la seguridad de la información, sentando las bases para muchas de las comunicaciones seguras que utilizamos hoy en día en internet.
+"""
+
+st.write(resumen17)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/d32bda39418af2b8fe13792d25ca8f29ef1e4ca3.pdf)")
