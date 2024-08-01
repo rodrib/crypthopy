@@ -462,3 +462,18 @@ st.write(resumen17)
 
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/d32bda39418af2b8fe13792d25ca8f29ef1e4ca3.pdf)")
+
+
+#Titulo
+st.header("Amontonando más componentes en los circuitos integrados")
+
+
+
+resumen18 = """
+El artículo de Gordon Moore de 1965 dio origen a la Ley de Moore, que predice la duplicación de transistores en circuitos integrados cada dos años. Esta ley se relaciona directamente con el avance en velocidad de procesamiento, precio y capacidad de memoria en informática. Bruce Schneier señala su relevancia en criptografía: todos los algoritmos criptográficos son vulnerables a ataques de fuerza bruta, que se facilitan con el tiempo debido a la Ley de Moore. Esto implica que la potencia computacional creciente hace más factibles los ataques que prueban todas las claves posibles o buscan colisiones en funciones hash. Por lo tanto, la Ley de Moore tiene un impacto significativo en el criptoanálisis, influyendo en la evolución y seguridad de los sistemas criptográficos.
+"""
+
+st.write(resumen18)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/0df73868bca566aff47e809b1523f5f69580052f.pdf)")
