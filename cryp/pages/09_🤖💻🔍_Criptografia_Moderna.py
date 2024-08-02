@@ -477,3 +477,20 @@ st.write(resumen18)
 
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/0df73868bca566aff47e809b1523f5f69580052f.pdf)")
+
+
+#Titulo
+st.header("Una teoría matemática de la criptografía")
+
+
+resumen19 = """
+Claude E. Shannon sentó las bases de la criptografía y teoría de la información modernas con tres publicaciones clave. En 1945, escribió "Una teoría matemática de la criptografía", un informe técnico que definió y demostró matemáticamente el concepto de secreto perfecto. Este trabajo fue la base para dos artículos fundamentales: "Una teoría matemática de la comunicación" (1948), considerado el fundamento de la teoría de la información moderna, y "Teoría de la comunicación de los sistemas de secreto" (1949), que vinculó la criptografía con la teoría de la información. Estos trabajos de Shannon establecieron los cimientos teóricos para el desarrollo de la criptografía y la teoría de la información, influyendo profundamente en ambos campos hasta la actualidad.
+"""
+
+
+st.write(resumen19)
+
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/453b536b9cef87f0ae4ce1c1f6d10427edb49c28.pdf)")
+
