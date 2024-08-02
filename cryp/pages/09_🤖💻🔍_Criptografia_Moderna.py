@@ -494,3 +494,16 @@ st.write(resumen19)
 # Enlace al artículo
 st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/453b536b9cef87f0ae4ce1c1f6d10427edb49c28.pdf)")
 
+#Titulo
+st.header("La criptografía militar")
+
+
+resumen20 = """
+El artículo de Auguste Kerckhoffs de 1883 dio origen al Principio de Kerckhoffs, un concepto fundamental en criptografía. Este principio establece que la seguridad de un sistema criptográfico debe depender exclusivamente de la elección de sus claves, mientras que todos los demás aspectos, incluido el algoritmo mismo, deben considerarse de conocimiento público. El corolario de este principio sugiere que los desarrolladores deben utilizar únicamente sistemas criptográficos completamente conocidos y transparentes. Este enfoque, que prioriza la transparencia y la robustez del diseño sobre el secreto del método, es un principio básico adoptado por empresas como Evervault en sus prácticas de seguridad, promoviendo la confianza y la verificabilidad en los sistemas criptográficos.
+"""
+
+
+st.write(resumen20)
+
+# Enlace al artículo
+st.write("[Link al artículo](https://cdn.sanity.io/files/r000fwn3/production/cbbaa37b5870570fe75bb35c9144fb183e0e43ac.pdf)")
