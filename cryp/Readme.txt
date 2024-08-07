@@ -1,0 +1,2 @@
+Archivos encryptados
+Se solicita rescate
