@@ -129,3 +129,17 @@ if uploaded_files:
 '''
 
 st.code(codigo, language='python')
+
+
+# Título
+st.title("Ransomware")
+
+# Texto
+texto1 = """
+El ransomware es una amenaza de gran importancia que continúa creciendo con el paso del tiempo. 
+Según el reciente análisis de mitad de año llevado a cabo por Cisco, 
+ya domina el mercado de malware y es el tipo de malware más rentable de la historia.
+"""
+
+# Mostrar el texto en Streamlit
+st.write(texto1)
