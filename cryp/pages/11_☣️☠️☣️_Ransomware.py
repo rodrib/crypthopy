@@ -15,50 +15,54 @@ st.write(texto)
 
 
 
-
 import streamlit as st
 from cryptography.fernet import Fernet
-import os
 
 # Funciones
 def generarKey():
     key = Fernet.generate_key()
     with open("key.key", "wb") as key_file:
         key_file.write(key)
+    return key
 
-def retornarKey():
-    return open("key.key", "rb").read()
-
-def encryp(files, key):
+def encryp(file, key):
     fernet = Fernet(key)
-    for file in files:
-        file_data = file.read()
-        encrypted_data = fernet.encrypt(file_data)
+    file_data = file.read()
+    encrypted_data = fernet.encrypt(file_data)
+    return file_data, encrypted_data
 
-        # Save the encrypted file
-        with open(file.name, "wb") as encrypted_file:
-            encrypted_file.write(encrypted_data)
-
-# Generar y retornar la clave
-generarKey()
-key = retornarKey()
-
-# Streamlit UI
+# Generar y mostrar la clave
 st.title("Cifrador de Archivos")
 
-uploaded_files = st.file_uploader("Cargar archivos", accept_multiple_files=True)
+key = generarKey()
+st.write("Clave generada:")
+st.code(key.decode(), language="text")
 
-if uploaded_files:
-    st.write(f"{len(uploaded_files)} archivos cargados.")
-    encryp(uploaded_files, key)
-    st.success("Archivos cifrados con éxito.")
+uploaded_file = st.file_uploader("Cargar un archivo")
 
+if uploaded_file:
+    # Mostrar el contenido original del archivo
+    original_data, encrypted_data = encryp(uploaded_file, key)
+    
+    st.write("Contenido original del archivo:")
+    st.code(original_data.decode(errors="ignore"), language="text")
+    
+    # Guardar el archivo cifrado
+    encrypted_file_name = uploaded_file.name + ".encrypted"
+    with open(encrypted_file_name, "wb") as encrypted_file:
+        encrypted_file.write(encrypted_data)
+
+    st.write("Archivo cifrado creado con éxito.")
+    
+    # Mostrar el contenido cifrado del archivo
+    st.write("Contenido cifrado del archivo:")
+    st.code(encrypted_data.decode(errors="ignore"), language="text")
+    
     # Crear y guardar el archivo Readme.txt
     with open("Readme.txt", "w") as file:
         file.write("Archivos encryptados\n")
         file.write("Se solicita rescate")
-    st.write("Archivo Readme.txt creado con instrucciones.")
-
+    
     # Descargar el archivo Readme.txt
     with open("Readme.txt", "rb") as file:
         btn = st.download_button(
@@ -67,6 +71,17 @@ if uploaded_files:
             file_name="Readme.txt",
             mime="text/plain"
         )
+
+    # Descargar el archivo cifrado
+    with open(encrypted_file_name, "rb") as file:
+        st.download_button(
+            label="Descargar archivo cifrado",
+            data=file,
+            file_name=encrypted_file_name,
+            mime="application/octet-stream"
+        )
+
+
 st.write("""
 ### Concepto Básico de un Ransomware
 
@@ -143,3 +158,4 @@ ya domina el mercado de malware y es el tipo de malware más rentable de la hist
 
 # Mostrar el texto en Streamlit
 st.write(texto1)
+
