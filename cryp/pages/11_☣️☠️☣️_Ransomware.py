@@ -17,6 +17,7 @@ st.write(texto)
 
 import streamlit as st
 from cryptography.fernet import Fernet
+from PyPDF2 import PdfReader
 
 # Funciones
 def generarKey():
@@ -31,41 +32,50 @@ def encryp(file, key):
     encrypted_data = fernet.encrypt(file_data)
     return file_data, encrypted_data
 
+def mostrar_contenido_pdf(file):
+    pdf_reader = PdfReader(file)
+    texto_pdf = ""
+    for page in pdf_reader.pages:
+        texto_pdf += page.extract_text()
+    return texto_pdf
+
 # Generar y mostrar la clave
-st.title("Cifrador de Archivos")
+st.title("Cifrador de Archivos PDF")
 
 key = generarKey()
 st.write("Clave generada:")
 st.code(key.decode(), language="text")
 
-uploaded_file = st.file_uploader("Cargar un archivo")
+uploaded_file = st.file_uploader("Cargar un archivo PDF", type="pdf")
 
 if uploaded_file:
-    # Mostrar el contenido original del archivo
+    # Mostrar el contenido original del archivo PDF
+    st.write("Contenido original del archivo PDF:")
+    texto_pdf = mostrar_contenido_pdf(uploaded_file)
+    st.text_area("Contenido del PDF", value=texto_pdf, height=300)
+
+    # Cifrar el archivo PDF
     original_data, encrypted_data = encryp(uploaded_file, key)
-    
-    st.write("Contenido original del archivo:")
-    st.code(original_data.decode(errors="ignore"), language="text")
     
     # Guardar el archivo cifrado
     encrypted_file_name = uploaded_file.name + ".encrypted"
     with open(encrypted_file_name, "wb") as encrypted_file:
         encrypted_file.write(encrypted_data)
 
-    st.write("Archivo cifrado creado con éxito.")
+    st.write("Archivo PDF cifrado creado con éxito.")
     
-    # Mostrar el contenido cifrado del archivo
-    st.write("Contenido cifrado del archivo:")
-    st.code(encrypted_data.decode(errors="ignore"), language="text")
-    
+    # Mostrar el contenido cifrado del archivo (como bytes, no decodificado)
+    st.write("Contenido cifrado del archivo PDF (mostrado en formato hexadecimal):")
+    st.code(encrypted_data.hex(), language="text")
+
     # Crear y guardar el archivo Readme.txt
     with open("Readme.txt", "w") as file:
-        file.write("Archivos encryptados\n")
+        file.write("Archivos encriptados\n")
         file.write("Se solicita rescate")
     
     # Descargar el archivo Readme.txt
     with open("Readme.txt", "rb") as file:
-        btn = st.download_button(
+        st.download_button(
             label="Descargar Readme.txt",
             data=file,
             file_name="Readme.txt",
@@ -80,6 +90,7 @@ if uploaded_file:
             file_name=encrypted_file_name,
             mime="application/octet-stream"
         )
+
 
 
 st.write("""
