@@ -170,3 +170,6 @@ ya domina el mercado de malware y es el tipo de malware más rentable de la hist
 # Mostrar el texto en Streamlit
 st.write(texto1)
 
+st.write("""
+El ransomware emplea diversas técnicas para impedir el acceso al sistema o a los archivos de la víctima, exigiendo generalmente el pago de un rescate para restaurar dicho acceso. En los últimos tiempos, se ha observado un notable incremento en un tipo específico de ransomware conocido como ransomware criptográfico, el cual cifra los archivos de la víctima, haciendo su recuperación imposible sin la clave de descifrado adecuada.
+""")
