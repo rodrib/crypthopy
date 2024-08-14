@@ -22,6 +22,22 @@ En síntesis, el ransomware utiliza una variedad de técnicas para bloquear el a
 st.write(texto1)
 
 
+# Título
+st.title("¿Por qué utiliza cifrado el ransomware criptográfico?")
+
+# Contenido reformulado
+texto2 = """
+El ransomware criptográfico se apoya en el cifrado para asegurar la confidencialidad de los datos, permitiendo que solo quienes poseen la clave secreta puedan acceder al contenido original. Esto es crucial para los atacantes, ya que les permite modificar archivos o estructuras críticas en un sistema, haciendo que solo puedan restaurarse con la clave que ellos controlan.
+
+Este enfoque es comparable a tomar datos como rehenes, pidiendo un rescate a cambio de liberarlos. Además, el cifrado asegura la comunicación entre el malware y su servidor, donde reside la clave necesaria para restaurar los archivos afectados.
+
+Actualmente, los atacantes combinan cifrado simétrico y asimétrico para maximizar el rendimiento y la eficacia. El cifrado simétrico, que utiliza la misma clave para cifrar y descifrar, es eficiente y permite que el ransomware opere rápidamente. Por otro lado, el cifrado asimétrico, que emplea una clave pública y otra privada, facilita la gestión de claves para múltiples víctimas, protegiendo la clave simétrica secreta con una clave privada.
+
+En resumen, el ransomware criptográfico emplea el cifrado simétrico para bloquear los archivos de las víctimas y el cifrado asimétrico para salvaguardar la clave que permite su descifrado, combinando así eficiencia y seguridad en sus operaciones.
+"""
+
+st.write(texto2)
+
 # Funciones
 def generarKey():
     key = Fernet.generate_key()
