@@ -15,6 +15,12 @@ ya domina el mercado de malware y es el tipo de malware más rentable de la hist
 # Mostrar el texto en Streamlit
 st.write(texto)
 
+texto1 = """
+En síntesis, el ransomware utiliza una variedad de técnicas para bloquear el acceso al sistema o a los archivos de la víctima, y por lo general requiere el pago de un rescate para recuperar el acceso. Recientemente notamos un aumento significativo de un tipo muy particular, conocido como ransomware criptográfico.
+"""
+
+st.write(texto1)
+
 
 # Funciones
 def generarKey():
