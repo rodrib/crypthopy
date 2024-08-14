@@ -2,6 +2,20 @@ import streamlit as st
 from cryptography.fernet import Fernet
 from PyPDF2 import PdfReader
 
+# Título
+st.title("Ransomware")
+
+# Texto
+texto = """
+El ransomware es una amenaza de gran importancia que continúa creciendo con el paso del tiempo. 
+Según el reciente análisis de mitad de año llevado a cabo por Cisco, 
+ya domina el mercado de malware y es el tipo de malware más rentable de la historia.
+"""
+
+# Mostrar el texto en Streamlit
+st.write(texto)
+
+
 # Funciones
 def generarKey():
     key = Fernet.generate_key()
