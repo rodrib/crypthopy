@@ -53,6 +53,23 @@ image = Image.open(BytesIO(response.content))
 # Agregar la imagen debajo del título
 st.image(image, caption="Esquema de cifrado doble en el ransomware criptográfico", use_column_width=True)
 
+
+import streamlit as st
+
+# Título de la sección
+st.title("Comunicación con los servidores de comando y control: evasión y confidencialidad")
+
+
+
+# Resumen del texto
+resumen = """
+El cifrado en la comunicación con servidores de C&C busca evasión y confidencialidad. Inicialmente, el ransomware se centraba en la confidencialidad, pero ahora usa estándares como TLS, dificultando la detección. Redes sin capacidades de inspección de tráfico permiten que el malware se comunique sin ser detectado, lo que resulta en una protección reactiva.
+"""
+
+# Mostrar el resumen
+
+st.write(resumen)
+
 # # Funciones
 # def generarKey():
 #     key = Fernet.generate_key()
