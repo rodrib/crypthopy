@@ -70,6 +70,27 @@ El cifrado en la comunicación con servidores de C&C busca evasión y confidenci
 
 st.write(resumen)
 
+
+import streamlit as st
+
+st.title("Cómo evitar y combatir el ransomware criptográfico")
+
+st.header("Evitar el ransomware criptográfico")
+st.write("Para evitar el ransomware criptográfico, ESET recomienda:")
+st.write(
+    "Usar una solución de seguridad confiable y habilitar medidas proactivas como el sistema HIPS y la protección Anti-Phishing.",
+    "Tener conductas seguras: configurar el equipo para mostrar las extensiones ocultas de los archivos y no abrir vínculos ni mensajes de origen desconocido."
+)
+
+st.header("Combatir el ransomware criptográfico")
+st.write("En caso de infección, es crucial:")
+st.write(
+    "Tener un backup reciente, validado y offline de tus archivos. Crear copias de seguridad periódicamente, evitando guardarlas en unidades asignadas a tu equipo.",
+    "Como último recurso, intentar descifrar tus archivos con las herramientas de descifrado proporcionadas por los investigadores de seguridad para algunas familias específicas de ransomware criptográfico. ESET cuenta con estas herramientas."
+)
+
+st.write("Siguiendo estas recomendaciones, podrás evitar y combatir eficazmente el ransomware criptográfico, protegiendo tus archivos y datos valiosos.")
+
 # # Funciones
 # def generarKey():
 #     key = Fernet.generate_key()
