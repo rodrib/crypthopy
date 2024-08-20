@@ -38,6 +38,21 @@ En resumen, el ransomware criptográfico emplea el cifrado simétrico para bloqu
 
 st.write(texto2)
 
+
+from PIL import Image
+import requests
+from io import BytesIO
+
+# URL de la nueva imagen
+image_url = "https://web-assets.esetstatic.com/wls/2016/09/ransomware_espa%C3%B1ol.jpg"
+
+# Cargar la imagen desde la URL
+response = requests.get(image_url)
+image = Image.open(BytesIO(response.content))
+
+# Agregar la imagen debajo del título
+st.image(image, caption="Esquema de cifrado doble en el ransomware criptográfico", use_column_width=True)
+
 # # Funciones
 # def generarKey():
 #     key = Fernet.generate_key()
