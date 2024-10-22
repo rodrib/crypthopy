@@ -10,17 +10,17 @@ about_page = st.Page(
 )
 
 
-project_2_page = st.Page(
-    "views/Documentos.py",
-    title="Documentos",
-    icon=":material/smart_toy:",
-)
+# project_2_page = st.Page(
+#     "views/Documentos.py",
+#     title="Documentos",
+#     icon=":material/smart_toy:",
+# )
 
-project_3_page = st.Page(
-    "views/Estadisticas.py",
-    title="Estadisticas de las Investigaciones",
-    icon=":material/bar_chart:",
-)
+# project_3_page = st.Page(
+#     "views/Estadisticas.py",
+#     title="Estadisticas de las Investigaciones",
+#     icon=":material/bar_chart:",
+# )
 
 
 # --- NAVIGATION SETUP [WITHOUT SECTIONS] ---
@@ -29,15 +29,15 @@ project_3_page = st.Page(
 # --- NAVIGATION SETUP [WITH SECTIONS]---
 pg = st.navigation(
     {
-        "Info": [about_page],
-        "Projectos": [ project_2_page, project_3_page],
+        "Info": [about_page]#,
+        #"Projectos": [ project_2_page, project_3_page],
     }
 )
 
 
-# --- SHARED ON ALL PAGES ---
-st.logo("assets/codingisfun_logo.png")
-st.sidebar.markdown("Made with ❤️ by [Rfeb](https://www.linkedin.com/in/rodrigo-bogado-a64b4925b/)")
+# # --- SHARED ON ALL PAGES ---
+# st.logo("assets/codingisfun_logo.png")
+# st.sidebar.markdown("Made with ❤️ by [Rfeb](https://www.linkedin.com/in/rodrigo-bogado-a64b4925b/)")
 
 
 # --- RUN NAVIGATION ---
